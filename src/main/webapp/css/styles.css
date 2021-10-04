@@ -186,12 +186,12 @@ h2 {
   font-size: 36px; }
 
 .main {
-   background-image: url("../images/Bill-oxford.jpg");
-  height: 100%; 
+
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-      padding: 50px 0; 
+      padding: 50px 0;margin: 0;
       }
 
 .clear {

@@ -27,17 +27,14 @@ background-color: red;
 <!-- Main css -->
 <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    <div class="main">
-        <!-- Login -->
-        
+<body class="main">
+
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/Auction - white.png" alt="sing up image"></figure>
-                        <a style ="color:White; text-decoration:none" href="signup.jsp?user_type=Seller" class="signup-image-link">Become a seller</a>
-                        <a style ="color:white; text-decoration:none" href="signup.jsp?user_type=Buyer"  class="signup-image-link">Become a buyer</a>
+
                     </div>
 
                     <div class="signin-form">
@@ -80,6 +77,6 @@ background-color: red;
             </div>
         </section>
 
-    </div>
+
 </body>
 </html>
