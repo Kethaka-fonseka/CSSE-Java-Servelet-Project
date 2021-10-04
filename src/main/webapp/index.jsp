@@ -2,7 +2,9 @@
 		        IT No   : IT19053592
 		        Batch 06
  -->
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@page import="com.csse.servlet.LoginServlet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +19,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://kit.fontawesome.com/7db8364a09.js"></script>
 
-<style>
-
-.signup-image-link:hover{
-background-color: red;
-}
-
-</style>
 <!-- Main css -->
 <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -34,15 +29,15 @@ background-color: red;
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/Auction - white.png" alt="sing up image"></figure>
-
                     </div>
 
                     <div class="signin-form">
-                        <h2  style="color:white"class="form-title">Log In</h2>
+                        <h2  style="color:white"class="form-title text-center">Log In</h2>
                         <form method="POST" class="register-form" action="LoginServlet" id="login-form">
                             <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name "></i></label>
-                                <input type="text" name="user_name" id="your_name" placeholder="Your Name"  required="required"/>
+                                <label for="user_email"><i class="zmdi zmdi-email material-icons-name "></i></label>
+                                <input type="email" name="user_email" id="user_email" placeholder="Email"
+                                       required="required"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
@@ -64,14 +59,7 @@ background-color: red;
                          
                             
                         </form>
-                        <div style ="color:white" class="social-login">
-                            <span class="social-label">Or login with</span>
-                            <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>
