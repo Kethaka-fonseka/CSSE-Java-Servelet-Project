@@ -1,0 +1,228 @@
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:black;
+    opacity:0.8;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    font-family:Blooming sans elegent;
+    display: block;
+    text-align:center;
+    transition: 0.3s;
+    padding-top: 5px;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+    background-color:black;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 36px;
+
+
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 30px;
+}
+#side-head{
+    color:grey;
+    font-style: italic;
+    font-family:Blooming sans elegent;
+    font-size: 20px;
+    text-align:center;
+    transition: 0.3s;
+}
+
+#side-img{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    height:65px;
+    width:65px;
+    border-radius:50%
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+.pauction{
+
+
+    color: black;
+    border: 2px solid #555555;
+    border-radius:4px;
+}
+
+.pauction:hover {
+    background-color: black;
+    color: white;
+
+}
+
+.btnmen{
+
+    background-color:black;
+    color: black;
+    border: 2px solid black;
+    border-radius:4px;
+}
+
+.btnmen:hover {
+    background-color: red;
+    border: 2px solid red;
+    color: white;
+
+}
+
+
+.rocket{
+    position: relative;
+
+}
+
+.overlay {
+    position: Absolute;
+    opacity: 0;
+    transition: .3s ease;
+
+    top: 0;
+    bottom: 0;
+    left: 87px;
+    right: 0;
+    height:65px;
+    width:66px;
+    border-radius:50%
+}
+
+.rocket:hover .overlay {
+    opacity: 0.8;
+    background-color: black;
+}
+
+.icon {
+
+    color: white;
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    text-decoration:none;
+
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 100;
+}
+
+
+
+.image-form-container{
+
+    position:fixed;
+    display:none;
+    z-index:100;
+    width:1200px;
+    height:500px;
+    margin-left:275px;
+    margin-top:100px;
+    background:black;
+    font-color:white;
+    opacity:0.8;
+    padding:30px;
+}
+
+.image-form-close{
+
+    position: absolute;
+    top: -8px;
+    left:1170px;
+    font-size: 36px;
+    color:white;
+
+}
+
+.image-form-upload{
+    position:absolute;
+    left:555px;
+    top:420px;
+    button-border:none;
+    background-color:white;
+    padding: 6px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius:4px; font-family:blooming sans elegent;
+
+}
+
+.image-form-upload:hover{
+    background-color:green;
+
+}
+.file-input{
+
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.file-input + label {
+    font-size: 15px;
+    font-weight: 700;
+    color: black;
+    background-color:white;
+    display: inline-block;
+    cursor: pointer;
+    margin-left:510px;
+    margin-top:10px;
+    padding:10px;
+    border-radius:4px;
+    font-family:blooming sans elegent;
+
+}
+
+.file-input:focus + label,
+.file-input + label:hover {
+    background-color: red;
+    z-index:100;
+}
+
+
+#output_image
+{
+    width:250px; height:250px; border:2px solid white; border-radius:50%; display:block; margin-left:auto; margin-right:auto; margin-top:25px}
