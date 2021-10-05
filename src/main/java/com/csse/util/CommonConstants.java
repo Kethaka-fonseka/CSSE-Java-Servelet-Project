@@ -62,6 +62,19 @@ public class CommonConstants {
 	/** Constant for query id of create_table in Query.xml */
 	public static final String QUERY_ID_CREATE_TABLE2 = "create_category_table";
 
+
+	/** Constant for query id of add requisition  to requisition table */
+	public static final String QUERY_ID_INSERT_REQUISITION="create_requisition_table";
+
+	/** Constant for query id of retrive  requisition by id*/
+	public static  final String QUERY_ID_GET_REQUISITION="get_requisition_by_id";
+
+
+	/** Constant for query id of retrive  all requisitions*/
+	public static  final String QUERY_ID_ALL_REQUISITIONS="get_all_requisitions";
+
+/** Constant for query id delete  exiting requisition from id*/
+public static final String QUERY_ID_REMOVE_REQUISITION="remove_requisition";
 	public static final String QUERY_ID_GET_USER = "log_user";
 	
 	public static final int COLUMN_INDEX_ONE = 1;

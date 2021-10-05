@@ -353,4 +353,33 @@
         ]]>
 	</query>
 	
+	<!-- Insert requisition to the table -->
+	<query id="create_requisition_table">
+        <![CDATA[
+          	insert into requisition(requisitionType,requestedBy,siteLocation,itemName,itemQty, requestedPrice,status,totalPrice) 
+          	values (?,?,?,?,?,?,?,?)
+        ]]>
+	</query>
+	
+		<!-- Select all requisitions -->
+	<query id="get_all_requisitions">
+         <![CDATA[        
+            select * from requisition
+        ]]>
+	</query>
+	
+		<!-- remove requisition by id -->
+	<query id="remove_requisition">
+         <![CDATA[        
+              delete from requisition where requisitionNo=?
+        ]]>
+	</query>
+	
+	<!-- get requisition by id -->
+		<query id="get_requisition_by_id">
+         <![CDATA[        
+              select * from requisition where requisitionNo=?
+        ]]>
+	</query>
+	
 </xml>

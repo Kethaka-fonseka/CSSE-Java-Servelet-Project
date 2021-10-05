@@ -47,7 +47,9 @@
                                     <a href="#">Requisition Form</a>
                                     <ul class="dropdown">
                                         <li><a href="AddRequisition.jsp">Add Requisition</a></li>
-                                        <li><a href="RequisitionList.jsp">Check Requisition</a></li>
+                                       <form action="GetAllRequisitionsServlet" method="post">
+                                        <li><button type="submit">Check Requisition</button></li>
+                                       </form>
                                     </ul>
                                 </li>
 
