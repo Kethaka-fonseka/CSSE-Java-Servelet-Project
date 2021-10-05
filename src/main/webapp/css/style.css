@@ -170,8 +170,8 @@ a {
 .site-navbar {
   margin-bottom: 0px;
   z-index: 1999;
-  position: absolute;
-  top: 0;
+  position: relative;
+
   width: 100%;
   background: transparent !important; }
   .site-navbar.position-relative {

@@ -9,7 +9,7 @@ public class DBConnectionUtil extends CommonUtil {
 	private static Connection connection;
 
 	// This works according to singleton pattern
-	private DBConnectionUtil() {
+    public DBConnectionUtil() {
 	}
 
 	/**

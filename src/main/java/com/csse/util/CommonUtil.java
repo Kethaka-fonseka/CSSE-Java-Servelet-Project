@@ -27,17 +27,17 @@ public class CommonUtil {
 
 
 
-//	public static String generateuIDs(ArrayList<String> arrayList) {
-//
-//		String id;
-//		int next = arrayList.size();
-//		next++;
-//		id = CommonConstants.USER_ID_PREFIX + next;
-//		if (arrayList.contains(id)) {
-//			next++;
-//			id = CommonConstants.USER_ID_PREFIX + next;
-//		}
-//		return id;
-//	}
+	public static String generateUID(ArrayList<String> arrayList) {
+
+		String id;
+		int next = arrayList.size();
+		next++;
+		id = CommonConstants.USER_ID_PREFIX + next;
+		if (arrayList.contains(id)) {
+			next++;
+			id = CommonConstants.USER_ID_PREFIX + next;
+		}
+		return id;
+	}
 
 }

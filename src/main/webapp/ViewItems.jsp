@@ -1,10 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Ushan
-  Date: 10/4/2021
-  Time: 8:57 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.csse.model.Item" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.csse.service.ItemServiceImpl" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -23,72 +20,34 @@
             <th scope="col">Item Code</th>
             <th scope="col">Quantity</th>
             <th scope="col">Price</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
         </tr>
         </thead>
         <tbody>
+        <%
+            List<Item> item = ItemServiceImpl.getItem();
+            for(Item items : item){
+        %>
         <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
+            <td><%=items.getItemName()%></td>
+            <td><%=items.getItemCode()%></td>
+            <td><%=items.getQuantity()%></td>
+            <td><%=items.getPrice()%></td>
             <td>
-                <li><a href="EditItems.jsp">Update</a></li>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button href="EditItem.jsp" class="btn btn-primary" type="submit">Edit</button>
+
             </td>
-
-        <tr>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Jacob</td>
             <td>
-                <li><a href="EditItems.jsp.jsp">Update</a></li>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <form method="POST" action="DeleteServlet">
+                <button value="<%=items.getItemId()%>" name="deleteID" class="btn btn-primary" type="submit">Delete</button>
+                </form>
             </td>
         </tr>
+        <%
+            }
+        %>
         </tbody>
     </table>
 </div>

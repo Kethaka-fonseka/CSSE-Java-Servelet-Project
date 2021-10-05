@@ -62,7 +62,6 @@ public class CommonConstants {
 	/** Constant for query id of create_table in Query.xml */
 	public static final String QUERY_ID_CREATE_TABLE2 = "create_category_table";
 
-
 	/** Constant for query id of add requisition  to requisition table */
 	public static final String QUERY_ID_INSERT_REQUISITION="create_requisition_table";
 
@@ -75,8 +74,33 @@ public class CommonConstants {
 
 /** Constant for query id delete  exiting requisition from id*/
 public static final String QUERY_ID_REMOVE_REQUISITION="remove_requisition";
+
+  
+/** Constant for query id of login in Query.xml */
 	public static final String QUERY_ID_GET_USER = "log_user";
-	
+
+	/** Constant for query id of insert user in Query.xml */
+	public static final String QUERY_ID_INSERT_USER = "insert_user";
+
+	/** Constant for query id of insert supplier in Query.xml */
+	public static final String QUERY_ID_INSERT_SUP = "insert_supplier";
+
+	/** Constant for query id of insert supplier in Query.xml */
+	public static final String QUERY_ID_INSERT_STAFF = "insert_staff";
+
+	/** Constant for query id of get user ids in Query.xml */
+	public static final String QUERY_ID_GET_USER_IDS = "user_ids";
+
+	/** Constant for query id of get user ids in Query.xml */
+	public static final String QUERY_ID_GET_SUPPLIER = "get_supplier";
+
+/** Constant for query id of get user ids in Query.xml */
+	public static final String QUERY_ID_ALL_SUPPLIERS = "get_suppliers";
+
+	/** Constant for query id of get an item in Query.xml */
+	public static final String QUERY_GET_ITEM = "item_get";
+
+
 	public static final int COLUMN_INDEX_ONE = 1;
 	public static final int COLUMN_INDEX_TWO = 2;
 	public static final int COLUMN_INDEX_THREE = 3;
