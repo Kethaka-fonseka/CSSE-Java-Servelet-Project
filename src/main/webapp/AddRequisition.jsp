@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Ushan
-  Date: 10/4/2021
-  Time: 11:36 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,55 +8,58 @@
 <body>
 <div>
 
-  <form>
-    <div class="col-6">
+  <form method="POST" action="AddRequisionServlet">
+   <%--<div class="col-6">
       <label  class="form-label">Requisition No</label>
       <input type="text" class="form-control" id="inputNumber" placeholder="Requisition No">
-    </div>
+    </div>--%>
 
     <div class="col-md-6">
       <label for="inputState" class="form-label">Requisition Type</label>
-      <select id="inputState" class="form-select">
+      <select name="requisitionType" id="inputState" class="form-select">
         <option selected>Choose...</option>
-        <option>itmes</option>
+        <option value="type1">type1</option>
+        <option value="type2">type2</option>
+        <option value="type3">type3</option>
       </select>
     </div>
 
     <div class="col-6">
       <label  class="form-label">Requisition By</label>
-      <input type="text" class="form-control" id="inputReqBy" placeholder="Requisition By">
+      <input type="text" name="requestedBy" class="form-control" id="inputReqBy" placeholder="Requisition By">
     </div>
 
     <div class="col-md-6">
       <label for="inputState" class="form-label">Site Location</label>
-      <select id="inputLocation" class="form-select">
-        <option selected>Choose...</option>
-        <option>Colombo</option>
+      <select name="siteLocation" id="inputLocation" class="form-select">
+        <option value="colombo">Colombo</option>
       </select>
     </div>
 
     <div class="col-md-6">
       <label for="inputState" class="form-label">Item</label>
-      <select id="inputItem" class="form-select">
-        <option selected>Choose...</option>
-        <option>itmes</option>
+      <select name="itemName" id="inputItem" class="form-select">>
+        <option value="sand">Sand</option>
+        <option value="stone">Stones</option>
+        <option value="cement">Cement</option>
       </select>
     </div>
 
     <div class="col-6">
-      <label  class="form-label">Quntity</label>
-      <input type="text" class="form-control" id="inputQTY" placeholder="Quntity">
+      <label  class="form-label">Quantity</label>
+      <input type="text" name="itemQty" class="form-control" id="inputQTY" placeholder="Quantity">
     </div>
 
     <div class="col-6">
-      <label  class="form-label">Rote</label>
-      <input type="text" class="form-control" id="inputRote" placeholder="Rote">
+      <label  class="form-label">Requesting Price</label>
+      <input type="text" class="form-control"  name="requestedPrice" id="inputRate" placeholder="Requesting price">
     </div>
+
 
     <div class="col-12">
       <label  class="form-label">Action</label>
       <div class="form-check">
-        <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+        <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" >
         <label class="form-check-label" for="invalidCheck3">
           Send To Approval
         </label>

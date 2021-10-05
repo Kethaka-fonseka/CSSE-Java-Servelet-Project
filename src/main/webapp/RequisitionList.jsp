@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="com.csse.model.Requisition"%>
+<%@page import="java.util.ArrayList" %>
+
 <html>
 <head>
     <title>Requisition List</title>
@@ -26,7 +29,6 @@
       <th scope="col">Quantity</th>
       <th scope="col">Rate</th>
       <th scope="col">Amount</th>
-      <th scope="col">Requisition Date</th>
       <th scope="col">Requested By</th>
       <th scope="col">Status</th>
       <th scope="col">Actions</th>
@@ -34,55 +36,25 @@
     </tr>
     </thead>
     <tbody>
+    <%
+      ArrayList<Requisition> requisitions=(ArrayList<Requisition>) request.getAttribute("requisitions");
+      for(Requisition list:requisitions){
+    %>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+    <td><%=list.getRequisitionNo()%></td>
+      <td><%=list.getRequisitionType()%></td>
+      <td><%=list.getItemQty()%></td>
+      <td><%=list.getRequestedPrice()%></td>
+      <td><%=list.getTotalPrice()%></td>
+      <td><%=list.getRequestedBy()%></td>
+      <td><%=list.getStatus()%></td>
       <td>
-        <li><a href="EditRequisitions.jsp">Update</a></li>
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Delete
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </td>
-
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Jacob</td>
-      <td>
-        <li><a href="EditRequisitions.jsp">Update</a></li>
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Delete
-        </button>
+        <form action="GetRequisitionByIDServlet" method="post">
+       <button  name="id" type="submit" value=<%=list.getRequisitionNo()%>>Update</button>
+        </form>
+        <form action="DeleteRequisitionServlet"method="post">
+        <button type="submit"  name="id" value=<%=list.getRequisitionNo()%> >Delete</button>
+        </form>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,6 +65,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
+
                 ...
               </div>
               <div class="modal-footer">
@@ -104,6 +77,7 @@
         </div>
       </td>
     </tr>
+<%}%>
     </tbody>
   </table>
 </div>

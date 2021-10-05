@@ -22,4 +22,43 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/log</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AddRequisitionServlet</servlet-name>
+        <servlet-class>com.csse.servlet.AddRequisitionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddRequisitionServlet</servlet-name>
+        <url-pattern>/AddRequisition</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetAllRequisitionsServlet</servlet-name>
+        <servlet-class>com.csse.servlet.GetAllRequisiotionsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAllRequisitionsServlet</servlet-name>
+        <url-pattern>/GetAllRequisitionsServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>DeleteRequisitions</servlet-name>
+        <servlet-class>com.csse.servlet.DeleteRequisitionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteRequisitions</servlet-name>
+        <url-pattern>/DeleteRequisitions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetRequisitionsByID</servlet-name>
+        <servlet-class>com.csse.servlet.GetRequisitionByIDServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetRequisitionsByID</servlet-name>
+        <url-pattern>/GetRequisitionsByID</url-pattern>
+    </servlet-mapping>
+
 </web-app>
