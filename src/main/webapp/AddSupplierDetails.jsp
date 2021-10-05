@@ -1,52 +1,60 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Ushan
-  Date: 10/4/2021
-  Time: 8:37 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="fonts/icons/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+
     <title>Add Supplier Details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-<br><br><br>
-<div class="m-5 ">
-    <h1>Add Supplier Details</h1>
-    <form>
-        <div class="col-6">
-            <label  class="form-label">Company Name</label>
-            <input type="text" class="form-control" id="inputCname" placeholder="Company Name">
+<jsp:include page="header.jsp"/>
+
+<div class="card m-5"  style="background-color: #ececec">
+    <h4  style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Add Suppliers</h4>
+    <form method="POST" action="AddUserServlet">
+ <div class="d-grid gap-2 card-body pt-2 p-5">
+     <div >
+            <label  class="form-label">User Name</label>
+            <input type="text" class="form-control" name="user_name"  id="inputName" placeholder="User Name">
         </div>
 
 
-        <div class="col-6">
-            <label  class="form-label">Supplier Name</label>
-            <input type="text" class="form-control" id="inputSname" placeholder="Supplier Name">
-        </div>
-
-
-        <div class="col-6">
+        <div >
             <label  class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+            <input type="email" class="form-control" name="email" id="inputEmail" placeholder="example@gmail.com">
         </div>
 
-        <div class="col-6">
-            <label  class="form-label">Contact Number</label>
-            <input type="text" class="form-control" id="inputConNum" placeholder="Contact Number">
+        <div >
+            <label  class="form-label">Password</label>
+            <input type="password" class="form-control" name="pass" id="inputPass" >
+        </div>
+
+        <div >
+            <label  class="form-label">Company Name</label>
+            <input type="text" class="form-control" id="inputCopmany" name="company_name" placeholder="JMIS Hardware">
+        </div>
+
+       <div>
+            <label  class="form-label">Mobile Number</label>
+            <input type="number" class="form-control" id="inputNumber" name="mob_num" placeholder="0774322123">
+        </div>
+
+     <div class="form-group text-center p-4" style="color: red; text-transform: uppercase">
+         <%=(request.getAttribute("errMessage") == null) ? "": request.getAttribute("errMessage")%>
+     </div>
+
+        <div class="text-center mt-4">
+            <button class="btn btn-dark col-2 " type="submit">Add User</button>
         </div>
 
 
-        <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
-        </div>
-
+ </div>
     </form>
 </div>
 <!-- FOOTER -->
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

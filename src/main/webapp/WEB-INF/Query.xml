@@ -7,14 +7,34 @@
         ]]>
 </query>
 
-	<!-- DROP TABLE EMPLOYEES Query -->
-<!--   	<query id="drop_table">
-         <![CDATA[        
-            DROP TABLE IF EXISTS item 
+	<query id="insert_user">
+		<![CDATA[
+          	insert into users (u_id, u_role, u_name, u_mail, u_pass)
+          	values (?, ?, ?, ?, ?)
         ]]>
 	</query>
--->
-	<!-- Select all customer orders Query -->
+
+	<query id="insert_supplier">
+		<![CDATA[
+          	insert into users (s_company_name, s_mob_num, u_id)
+          	values (?, ?, ?)
+        ]]>
+	</query>
+
+	<query id="insert_supplier">
+		<![CDATA[
+          	insert into users (s_company_name, s_mob_num, u_id)
+          	values (?, ?, ?)
+        ]]>
+	</query>
+
+	<query id="user_ids">
+		<![CDATA[
+            select u_id from users
+        ]]>
+	</query>
+
+
 	<query id="insert_item">
         <![CDATA[
           	insert into item (itemNo, title, category, condition_, brand, color, startDate, endDate, startPrice, buyPrice, reservePrice, desc_,user) 

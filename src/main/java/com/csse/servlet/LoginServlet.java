@@ -3,7 +3,6 @@ package com.csse.servlet;
 
 import com.csse.model.LoginBean;
 import com.csse.service.LoginServiceImpl;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-		
+
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 

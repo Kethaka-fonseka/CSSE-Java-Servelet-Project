@@ -1,11 +1,12 @@
 package com.csse.model;
 
 public class User {
+    private String userId;
     private String userName;
     private String userRole;
     private String userPass;
     private String userMail;
-    private String userPassword;
+
 
     public String getUserName() {
         return userName;
@@ -39,22 +40,23 @@ public class User {
         this.userMail = userMail;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userName='" + userName + '\'' +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
                 ", userRole='" + userRole + '\'' +
                 ", userPass='" + userPass + '\'' +
                 ", userMail='" + userMail + '\'' +
-                ", userPassword='" + userPassword + '\'' +
                 '}';
     }
 }
