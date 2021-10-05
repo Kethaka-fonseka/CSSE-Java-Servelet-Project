@@ -8,6 +8,11 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+/**
+* MainActvity class is used to convert web view into mobile view
+* by now ,localhost url was used to convert web app
+*
+*/
 public class MainActivity extends AppCompatActivity {
     private WebView mywebView;
 
