@@ -52,7 +52,7 @@ public class ItemServiceImpl implements IItemService {
             preparedStatement.execute();
             connection.commit();
 
-        } catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+        } catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
                  log.log(Level.SEVERE, e.getMessage());
     }
         finally {
@@ -80,7 +80,7 @@ public class ItemServiceImpl implements IItemService {
      */
     @Override
     public int editItem(Item item) {
-        int result = 0;
+        int result;
 
         try {
             // get database connection from DBConnection class in DBConnection package
@@ -101,7 +101,7 @@ public class ItemServiceImpl implements IItemService {
             connection.commit();
             return result;
 
-        } catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+        } catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
             log.log(Level.SEVERE, e.getMessage());
             result = 0;
             return result;
@@ -132,7 +132,7 @@ public class ItemServiceImpl implements IItemService {
      */
     @Override
     public int deleteItem(Item item) {
-        int result = 0;
+        int result;
 
         try {
             // get database connection from DBConnection class in DBConnection package
@@ -151,7 +151,7 @@ public class ItemServiceImpl implements IItemService {
             connection.commit();
             return result;
 
-        } catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+        } catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
             log.log(Level.SEVERE, e.getMessage());
             return 0;
         }
@@ -175,15 +175,15 @@ public class ItemServiceImpl implements IItemService {
 
 
     /**
-     * getItem function is used to display all item
-     * @return ItemList
+     *
+     * @return List<Item>
      * @throws ClassNotFoundException
      * @throws SQLException
-     * @throws IOException
      * @throws ParserConfigurationException
      * @throws SAXException
      */
-    public static List<Item> getItem() throws ClassNotFoundException, SQLException, IOException, ParserConfigurationException, SAXException {
+
+    public static List<Item> getItem() throws ClassNotFoundException, SQLException, ParserConfigurationException, SAXException {
 
         ArrayList<Item> items = new ArrayList<>();
 

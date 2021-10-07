@@ -1,17 +1,23 @@
 package com.csse.util;
 
-import java.io.File;
-import java.io.IOException;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import org.w3c.dom.Element;
+import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-//import com.oop.service.ItemServiceImpl;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+
+import org.w3c.dom.Element;
 
 public class QueryUtil extends CommonUtil {
-
 	/**
 	 * This method read the ItemQuery.xml file and retrieve the query by
 	 * query id.
@@ -34,13 +40,26 @@ public class QueryUtil extends CommonUtil {
 
 		NodeList nodeList;
 		Element element = null;
+
 		/*
 		 * Read the Query.xml file and read each query node into node
 		 * list. It refers tag name query
 		 */
-		nodeList = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(CommonConstants.QUERY_XML))
-				.getElementsByTagName(CommonConstants.TAG_NAME);
 
+
+
+		/* stream = QueryUtil.class.getClassLoader().getResourceAsStream("/Query.xml");
+		 * System.out.println(stream != null);
+		 * DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance() ;
+		 * DocumentBuilder builder = factory.newDocumentBuilder();
+		 * Document document = builder.parse(stream);*/
+
+
+		InputStream stream = QueryUtil.class.getResourceAsStream(CommonConstants.QUERY_XML);
+	    /*Prints boolean statement which varies with availability of the Query.xml*/
+		System.out.println(stream != null);
+
+		nodeList = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(stream).getElementsByTagName(CommonConstants.TAG_NAME);
 		/*
 		 * Extract the node from node list using query id query id is taken from
 		 * query node attribute
@@ -50,6 +69,7 @@ public class QueryUtil extends CommonUtil {
 			if (element.getAttribute(CommonConstants.ATTRIB_ID).equals(id))
 				break;
 		}
+		assert element != null;
 		return element.getTextContent().trim();
 	}
 }

@@ -3,10 +3,10 @@ package com.csse.util;
 public class CommonConstants {
 
 	/** Constant for config.properties key for query file path */
-	public static final String QUERY_XML = "Query.xml";
+	public static final String QUERY_XML = "/Query.xml";
 
 	/** Constant for file path of config.properties */
-	public static final String PROPERTY_FILE = "config.properties";
+	public static final String PROPERTY_FILE = "/config.properties";
 
 	/** Constant for query tag in Query.xml */
 	public static final String TAG_NAME = "query";

@@ -21,32 +21,35 @@ import com.csse.util.QueryUtil;
 import org.xml.sax.SAXException;
 
 public class RegisterServiceImpl implements IRegisterService {
-	
+
 	public static final Logger log = Logger.getLogger(RegisterServiceImpl.class.getName());
-
 	private static Connection connection;
-
-	private static Statement statement;
-
-	static{
-		//create table or drop if exist
-		//createUserTable();
-	}
-	
 	private PreparedStatement preparedStatement;
+	/*
+	static{
+		create table or drop if exist
+		createUserTable();
+	}
+	*/
 
-//	 public static void createUserTable() {
-//
-//		try {
-//			connection = DBConnectionUtil.getDBConnection();
-//			statement = connection.createStatement();
-//			statement.executeUpdate(QueryUtil.queryByID(CommonConstants.QUERY_ID_CREATE_TABLE3));
-//
-//		} catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
-//			log.log(Level.SEVERE, e.getMessage());
-//		}
-//	}
 
+/* public static void createUserTable() {
+
+ 		try {
+ 			connection = DBConnectionUtil.getDBConnection();
+ 			statement = connection.createStatement();
+ 			statement.executeUpdate(QueryUtil.queryByID(CommonConstants.QUERY_ID_CREATE_TABLE3));
+
+ 		} catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
+ 			log.log(Level.SEVERE, e.getMessage());
+ 		}
+ 	}*/
+
+	/**
+	 * @param user
+	 * @param supplier
+	 * @return res
+	 */
 	@Override
 	public boolean addSupplier(User user, Supplier supplier) {
         boolean res = false;
@@ -81,7 +84,7 @@ public class RegisterServiceImpl implements IRegisterService {
 			}
 
 			
-		}catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+		}catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
 			log.log(Level.SEVERE, e.getMessage());
 		} finally {
 			try {
@@ -133,7 +136,7 @@ public class RegisterServiceImpl implements IRegisterService {
 			}
 
 
-		}catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+		}catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
 			log.log(Level.SEVERE, e.getMessage());
 		} finally {
 			try {
@@ -151,51 +154,66 @@ public class RegisterServiceImpl implements IRegisterService {
 		return res;
 	}
 
-//	public void removeUser(String userID) {
-//		if (userID != null && !userID.isEmpty()) {
-//			try {
-//				connection = DBConnectionUtil.getDBConnection();
-//				preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_REMOVE_USER));
-//				preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, userID);
-//				preparedStatement.executeUpdate();
-//			} catch (SQLException | SAXException | IOException | ParserConfigurationException
-//					| ClassNotFoundException e) {
-//				log.log(Level.SEVERE, e.getMessage());
-//			} finally {
-//				/*
-//				 * Close prepared statement and database connectivity at the end
-//				 * of transaction
-//				 */
-//				try {
-//					if (preparedStatement != null) {
-//						preparedStatement.close();
-//					}
-//					if (connection != null) {
-//						connection.close();
-//					}
-//				} catch (SQLException e) {
-//					log.log(Level.SEVERE, e.getMessage());
-//				}
-//			}
-//		}
-//	}
-//
+/*
+	public void removeUser(String userID) {
+		if (userID != null && !userID.isEmpty()) {
+			try {
+				connection = DBConnectionUtil.getDBConnection();
+				preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_REMOVE_USER));
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, userID);
+				preparedStatement.executeUpdate();
+			} catch (SQLException | SAXException | IOException | ParserConfigurationException
+					| ClassNotFoundException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			} finally {
+				*/
+/*
+				 * Close prepared statement and database connectivity at the end
+				 * of transaction
+				 *//*
+
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					log.log(Level.SEVERE, e.getMessage());
+				}
+			}
+		}
+	}
+*/
 
 
+
+	/**
+	 * @param supplierID
+	 * @return
+	 */
 	@Override
 	public Supplier getSupplierByID(String supplierID) {
 		return actionOnSupplier(supplierID).get(0);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public ArrayList<Supplier> getSuppliers() {
 		return actionOnSupplier(null);
 	}
 
 
+	/**
+	 * @param userID
+	 * @return
+	 */
 	private ArrayList<Supplier> actionOnSupplier(String userID) {
 
-		ArrayList<Supplier> userList = new ArrayList<Supplier>();
+		ArrayList<Supplier> userList = new ArrayList<>();
 		try {
 			connection = DBConnectionUtil.getDBConnection();
 			if (userID != null && !userID.isEmpty()) {
@@ -221,7 +239,7 @@ public class RegisterServiceImpl implements IRegisterService {
 				Supplier.setCompanyName(resultSet.getString(CommonConstants.COLUMN_INDEX_SIX));
 				userList.add(Supplier);
 			}
-		} catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+		} catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
 			log.log(Level.SEVERE, e.getMessage());
 		} finally {
 			try {
@@ -237,47 +255,47 @@ public class RegisterServiceImpl implements IRegisterService {
 		}
 		return userList;
 	}
+/*
+	@Override
+	public Supplier updateUser(String userID, Supplier Supplier) {
 
-//	@Override
-//	public Supplier updateUser(String userID, Supplier Supplier) {
-//
-//		if (userID != null && !userID.isEmpty()) {
-//			try {
-//				connection = DBConnectionUtil.getDBConnection();
-//				preparedStatement = connection
-//						.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_UPDATE_USER));
-//
-//				preparedStatement.setString(CommonConstants.COLUMN_INDEX_SIX, Supplier.getuId());
-//				preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, Supplier.getuName());
-//				preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, Supplier.getuMail());
-//				preparedStatement.setString(CommonConstants.COLUMN_INDEX_THREE, Supplier.getuPass());
-//				preparedStatement.setString(CommonConstants.COLUMN_INDEX_FOUR, Supplier.getuR_Pass());
-//				preparedStatement.setString(CommonConstants.COLUMN_INDEX_FIVE, Supplier.getU_type());
-//				preparedStatement.executeUpdate();
-//
-//			} catch (SQLException | SAXException | IOException | ParserConfigurationException
-//					| ClassNotFoundException e) {
-//				log.log(Level.SEVERE, e.getMessage());
-//			} finally {
-//				try {
-//					if (preparedStatement != null) {
-//						preparedStatement.close();
-//					}
-//					if (connection != null) {
-//						connection.close();
-//					}
-//				} catch (SQLException e) {
-//					log.log(Level.SEVERE, e.getMessage());
-//				}
-//			}
-//		}
-//		return getUserByID(userID);
-//	}
+		if (userID != null && !userID.isEmpty()) {
+			try {
+				connection = DBConnectionUtil.getDBConnection();
+				preparedStatement = connection
+						.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_UPDATE_USER));
+
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_SIX, Supplier.getuId());
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, Supplier.getuName());
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, Supplier.getuMail());
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_THREE, Supplier.getuPass());
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_FOUR, Supplier.getuR_Pass());
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_FIVE, Supplier.getU_type());
+				preparedStatement.executeUpdate();
+
+			} catch (SQLException | SAXException | IOException | ParserConfigurationException
+					| ClassNotFoundException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			} finally {
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					log.log(Level.SEVERE, e.getMessage());
+				}
+			}
+		}
+		return getUserByID(userID);
+	}*/
 
 	@Override
 	public ArrayList<String> getUserIDs(){
 
-		ArrayList<String> arrayList = new ArrayList<String>();
+		ArrayList<String> arrayList = new ArrayList<>();
 		try {
 			connection = DBConnectionUtil.getDBConnection();
 			preparedStatement = connection
@@ -286,7 +304,7 @@ public class RegisterServiceImpl implements IRegisterService {
 			while (resultSet.next()) {
 				arrayList.add(resultSet.getString(CommonConstants.COLUMN_INDEX_ONE));
 			}
-		} catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+		} catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
 			log.log(Level.SEVERE, e.getMessage());
 		} finally {
 			try {
@@ -304,88 +322,90 @@ public class RegisterServiceImpl implements IRegisterService {
 	}
 
 
-//
-//	public String validateUser(Supplier Supplier){
-//
-//		String resp = null;
-//		try {
-//		connection = DBConnectionUtil.getDBConnection();
-//
-//		preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_VALIDATE_NAME));
-//
-//		connection.setAutoCommit(false);
-//
-//		preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, Supplier.getuName());
-//
-//		ResultSet res = preparedStatement.executeQuery();
-//
-//
-//		if(res.next()){
-//			resp = "Taken";
-//		}
-//
-//	}catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
-//		log.log(Level.SEVERE, e.getMessage());
-//	} finally {
-//		try {
-//			if (preparedStatement != null) {
-//				preparedStatement.close();
-//			}
-//			if (connection != null) {
-//				connection.close();
-//			}
-//		} catch (SQLException e) {
-//			log.log(Level.SEVERE, e.getMessage());
-//		}
-//	}
-//
-//		return resp;
-//
-//	}
-//
-//
-//	@Override
-//	public Supplier getUserByName(String username) {
-//		return Detailsgetter(username).get(0);
-//	}
-//
-//	private ArrayList<Supplier> Detailsgetter(String username) {
-//
-//		ArrayList<Supplier> Details = new ArrayList<Supplier>();
-//		try {
-//			connection = DBConnectionUtil.getDBConnection();
-//			preparedStatement = connection .prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_USERBY_NAME));
-//			preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, username);
-//			ResultSet resultSet = preparedStatement.executeQuery();
-//
-//			while (resultSet.next()) {
-//				Supplier Supplier = new Supplier();
-//
-//				Supplier.setuId(resultSet.getString(CommonConstants.COLUMN_INDEX_ONE));
-//				Supplier.setuName(resultSet.getString(CommonConstants.COLUMN_INDEX_TWO));
-//				Supplier.setuMail(resultSet.getString(CommonConstants.COLUMN_INDEX_THREE));
-//				Supplier.setuPass(resultSet.getString(CommonConstants.COLUMN_INDEX_FOUR));
-//				Supplier.setuR_Pass(resultSet.getString(CommonConstants.COLUMN_INDEX_FIVE));
-//				Supplier.setU_type(resultSet.getString(CommonConstants.COLUMN_INDEX_SIX));
-//
-//				Details.add(Supplier);
-//			}
-//		} catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
-//			log.log(Level.SEVERE, e.getMessage());
-//		} finally {
-//			try {
-//				if (preparedStatement != null) {
-//					preparedStatement.close();
-//				}
-//				if (connection != null) {
-//					connection.close();
-//				}
-//			} catch (SQLException e) {
-//				log.log(Level.SEVERE, e.getMessage());
-//			}
-//		}
-//		return Details;
-//	}
+/*
+
+	public String validateUser(Supplier Supplier){
+
+		String resp = null;
+		try {
+		connection = DBConnectionUtil.getDBConnection();
+
+		preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_VALIDATE_NAME));
+
+		connection.setAutoCommit(false);
+
+		preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, Supplier.getuName());
+
+		ResultSet res = preparedStatement.executeQuery();
+
+
+		if(res.next()){
+			resp = "Taken";
+		}
+
+	}catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
+		log.log(Level.SEVERE, e.getMessage());
+	} finally {
+		try {
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+			if (connection != null) {
+				connection.close();
+			}
+		} catch (SQLException e) {
+			log.log(Level.SEVERE, e.getMessage());
+		}
+	}
+
+		return resp;
+
+	}
+
+*/
+
+/*	@Override
+	public Supplier getUserByName(String username) {
+		return Detailsgetter(username).get(0);
+	}*/
+/*
+	private ArrayList<Supplier> Detailsgetter(String username) {
+
+		ArrayList<Supplier> Details = new ArrayList<Supplier>();
+		try {
+			connection = DBConnectionUtil.getDBConnection();
+			preparedStatement = connection .prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_USERBY_NAME));
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, username);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				Supplier Supplier = new Supplier();
+
+				Supplier.setuId(resultSet.getString(CommonConstants.COLUMN_INDEX_ONE));
+				Supplier.setuName(resultSet.getString(CommonConstants.COLUMN_INDEX_TWO));
+				Supplier.setuMail(resultSet.getString(CommonConstants.COLUMN_INDEX_THREE));
+				Supplier.setuPass(resultSet.getString(CommonConstants.COLUMN_INDEX_FOUR));
+				Supplier.setuR_Pass(resultSet.getString(CommonConstants.COLUMN_INDEX_FIVE));
+				Supplier.setU_type(resultSet.getString(CommonConstants.COLUMN_INDEX_SIX));
+
+				Details.add(Supplier);
+			}
+		} catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
+			log.log(Level.SEVERE, e.getMessage());
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
+		}
+		return Details;
+	}*/
 
 
 }

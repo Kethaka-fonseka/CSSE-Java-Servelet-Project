@@ -1,5 +1,4 @@
 package com.csse.service;
-
 import com.csse.model.LoginBean;
 import com.csse.util.CommonConstants;
 import com.csse.util.DBConnectionUtil;
@@ -8,20 +7,24 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LoginServiceImpl implements ILoginService{
+public class LoginServiceImpl implements ILoginService {
 
 	public static final Logger log = Logger.getLogger(LoginServiceImpl.class.getName());
 
+	/**
+	 * @param loginBean
+	 * @return state
+	 */
 	public boolean validate(LoginBean loginBean)  {
 
-		boolean status = false;
+		boolean state = false;
 
 
 		try {
@@ -36,14 +39,13 @@ public class LoginServiceImpl implements ILoginService{
 			preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, loginBean.getUserEmail());
 			preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, loginBean.getUserPass());
 			ResultSet resultSet = preparedStatement.executeQuery();
-			status = resultSet.next();
+			state = resultSet.next();
 
-		} catch (SQLException | SAXException | ParserConfigurationException | IOException e) {
-			e.printStackTrace();
+		} catch (SQLException | ParserConfigurationException | IOException | SAXException | ClassNotFoundException e) {
 			log.log(Level.SEVERE, e.getMessage());
 		}
 
-		return status;
+		return state;
 	}
 
 	

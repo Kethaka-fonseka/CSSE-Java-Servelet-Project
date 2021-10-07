@@ -25,8 +25,6 @@ public class CommonUtil {
 		}
 	}
 
-
-
 	public static String generateUID(ArrayList<String> arrayList) {
 
 		String id;

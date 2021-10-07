@@ -1,5 +1,6 @@
 package com.csse.util;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -24,21 +25,29 @@ public class DBConnectionUtil extends CommonUtil {
 	 *             - An exception that provides information on a database access
 	 *             error or other errors
 	 */
-	public static Connection getDBConnection() {
+	public static Connection getDBConnection() throws SQLException, ClassNotFoundException {
 		/*
 		 * This create new connection objects when connection is closed or it is
 		 * null
 		 */
-		try {
+
 			if (connection == null || connection.isClosed()) {
+
 
 				Class.forName(properties.getProperty(CommonConstants.DRIVER_NAME));
 				connection = DriverManager.getConnection(properties.getProperty(CommonConstants.URL),
 						properties.getProperty(CommonConstants.USERNAME), properties.getProperty(CommonConstants.PASSWORD));
+
+				/*This method prints the connection statement on console*/
+				if(connection != null){
+				System.out.println("Connection established on : "+ connection);}
+
+				else{
+					System.out.println("Connection is unstable");
+				}
 			}
-		} catch (SQLException | ClassNotFoundException throwables) {
-			throwables.printStackTrace();
-		}
+
+
 		return connection;
 	}
 }
