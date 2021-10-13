@@ -3,6 +3,7 @@ package com.csse.servlet;
 import com.csse.model.Item;
 import com.csse.service.IItemService;
 import com.csse.service.ItemServiceImpl;
+import org.xml.sax.SAXException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/EditItemServlet")
 public class EditItemServelet extends HttpServlet {
@@ -34,20 +37,26 @@ public class EditItemServelet extends HttpServlet {
 
         response.setContentType("text/html");
 
-        Item item = new Item();
-
         //set data to the variables
-        item.setItemName(request.getParameter("itemName"));
-        item.setItemCode(request.getParameter("itemCode")); //item code is the unique key
-        item.setQuantity(Integer.parseInt(request.getParameter("quantity")));
-        item.setPrice(Double.parseDouble(request.getParameter("price")));
+        String Id = request.getParameter("id");
 
+        try {
+            IItemService iItemService = new ItemServiceImpl();
+            Item item= iItemService.editItem(Id);
 
-        IItemService iItemService = new ItemServiceImpl();
-        iItemService.editItem(item);
-        //set attribute
-        request.setAttribute("item", item);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ViewItems.jsp");
-        dispatcher.forward(request, response);
+            request.setAttribute("item",item);
+            RequestDispatcher dis = request.getRequestDispatcher("EditItems.jsp");
+            dis.forward(request, response);
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+
     }
 }
