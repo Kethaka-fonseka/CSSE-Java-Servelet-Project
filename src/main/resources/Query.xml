@@ -34,14 +34,6 @@
         ]]>
 	</query>
 
-
-	<query id="insert_item">
-		<![CDATA[
-          	insert into item (itemNo, title, category, condition_, brand, color, startDate, endDate, startPrice, buyPrice, reservePrice, desc_,user)
-          	values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
-        ]]>
-	</query>
-
 	<query id="get_suppliers">
 		<![CDATA[
           	select u.u_id, u.u_mail, u.u_pass, u.u_name,s.s_mob_num, s.s_company_name
@@ -61,35 +53,11 @@
 
 
 
-	<!-- Select a particular item by id Query -->
-	<query id="item_by_id">
-		<![CDATA[
-            select * from item where item.itemNo = ?
-        ]]>
-	</query>
 
-	<!-- Select all items -->
-	<query id="all_items">
-		<![CDATA[
-            select * from item
-        ]]>
-	</query>
 
-	<!-- Delete a particular item by id Query -->
-	<query id="remove_item">
-		<![CDATA[
-            delete from item where item.itemNo = ?
-        ]]>
-	</query>
 
-	<!-- Update a particular item by id Query -->
-	<query id="update_item">
-		<![CDATA[
-            update item as i 
-            set i.title = ?,  i.category = ?, i.condition_ = ?, i.brand = ?, i.color = ?, i.startDate = ?, i.endDate = ?, i.startPrice = ?, i.buyPrice = ?, i.reservePrice = ?, i.desc_ = ?,i.user = ?
-            where i.itemNo = ?
-        ]]>
-	</query>
+
+
 
 	<!-- Get item IDs Query -->
 	<query id="item_ids">
@@ -381,5 +349,61 @@
             where i.username= ?
         ]]>
 	</query>
+
+
+
+
+
+
+	<query id="insert_item">
+		<![CDATA[
+          	insert into items (i_name,i_quantity, i_unit_price, s_id,i_code)
+          	values (?, ?, ?, ?,?)
+        ]]>
+	</query>
+
+	<!-- Select all items -->
+	<query id="item_get">
+		<![CDATA[
+            select * from items
+        ]]>
+	</query>
+
+	<!-- Select a particular item by id Query -->
+	<query id="item_by_id">
+		<![CDATA[
+            select * from items where i_id = ?
+        ]]>
+	</query>
+
+	<!-- Update a particular item by id Query -->
+	<query id="update_item">
+		<![CDATA[
+            update items as i
+            set i.i_name = ?, i.i_quantity = ?, i.i_unit_price = ?, i.i_code = ?
+            where i.i_id = ?
+        ]]>
+	</query>
+
+	<!-- Delete a particular item by id Query -->
+	<query id="remove_item">
+		<![CDATA[
+            delete from items i where i.i_id = ?
+        ]]>
+	</query>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </xml>
