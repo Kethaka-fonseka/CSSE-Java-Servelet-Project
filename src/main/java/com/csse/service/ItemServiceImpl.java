@@ -16,7 +16,6 @@ import com.csse.util.DBConnectionUtil;
 import com.csse.util.QueryUtil;
 import java.util.logging.Logger;
 
-
 public class ItemServiceImpl implements IItemService {
 
     private static Connection connection;
@@ -29,14 +28,14 @@ public class ItemServiceImpl implements IItemService {
     /**
      * addItem  function is used to add new items to the system
      * @param item
+     * @return
      */
     @Override
-    public void addItem(Item item) {
+    public boolean addItem(Item item) {
 
         try {
             // get database connection from DBConnection class in DBConnection package
             connection = DBConnectionUtil.getDBConnection();
-
 
             preparedStatement = connection
                     .prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_INSERT_ITEMS));
@@ -45,17 +44,18 @@ public class ItemServiceImpl implements IItemService {
 
             // assign values
             preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, item.getItemName());
-            preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, item.getItemCode());
-            preparedStatement.setInt(CommonConstants.COLUMN_INDEX_THREE, item.getQuantity());
-            preparedStatement.setDouble(CommonConstants.COLUMN_INDEX_FOUR, item.getPrice());
-
+            preparedStatement.setInt(CommonConstants.COLUMN_INDEX_TWO, item.getQuantity());
+            preparedStatement.setDouble(CommonConstants.COLUMN_INDEX_THREE, item.getPrice());
+            preparedStatement.setInt(CommonConstants.COLUMN_INDEX_FOUR, 1);
+            preparedStatement.setString(CommonConstants.COLUMN_INDEX_FIVE, item.getItemCode());
             preparedStatement.execute();
             connection.commit();
+            return true;
 
         } catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
                  log.log(Level.SEVERE, e.getMessage());
-    }
-        finally {
+                  return false;
+        } finally {
             /*
              * Close prepared statement and database connectivity at the end of
              * insert
@@ -75,12 +75,65 @@ public class ItemServiceImpl implements IItemService {
 
     /**
      * editItem function is used to update already added items
-     * @param item
      * @return result
      */
     @Override
-    public int editItem(Item item) {
-        int result;
+     public Item editItem(String itemId) throws ClassNotFoundException, SQLException, ParserConfigurationException, SAXException {
+
+        ArrayList<Item> items = new ArrayList<>();
+
+        try {
+            // get database connection from DBConnection class in DBConnection package
+            connection = DBConnectionUtil.getDBConnection();
+
+            preparedStatement = connection
+                    .prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_GET_ITEM));
+
+            connection.setAutoCommit(false);
+            preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE,itemId);
+            ResultSet result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+
+                Item item=new Item();
+
+                item.setItemId(result.getString(CommonConstants.COLUMN_INDEX_ONE));
+                item.setItemName(result.getString(CommonConstants.COLUMN_INDEX_TWO));
+                item.setQuantity(result.getInt(CommonConstants.COLUMN_INDEX_THREE));
+                item.setPrice(result.getDouble(CommonConstants.COLUMN_INDEX_FOUR));
+                int foreignKey= result.getInt(CommonConstants.COLUMN_INDEX_FIVE);
+                item.setItemCode(result.getString(CommonConstants.COLUMN_INDEX_SIX));
+
+                items.add(item);
+            }
+            System.out.println("RUN PROPERLY");
+
+        } catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+            log.log(Level.SEVERE, e.getMessage());
+
+            System.out.println("ERROR HERE RUN");
+        }
+        finally {
+            /*
+             * Close prepared statement and database connectivity at the end of
+             * the retrieve
+             */
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                log.log(Level.SEVERE, e.getMessage());
+            }
+        }
+        return  items.get(0);
+    }
+
+    @Override
+    public boolean updateItem(Item item) {
 
         try {
             // get database connection from DBConnection class in DBConnection package
@@ -96,20 +149,19 @@ public class ItemServiceImpl implements IItemService {
             preparedStatement.setInt(CommonConstants.COLUMN_INDEX_TWO, item.getQuantity());
             preparedStatement.setDouble(CommonConstants.COLUMN_INDEX_THREE, item.getPrice());
             preparedStatement.setString(CommonConstants.COLUMN_INDEX_FOUR, item.getItemCode());
-            result = preparedStatement.executeUpdate();
-
+            preparedStatement.setInt(CommonConstants.COLUMN_INDEX_FIVE, Integer.parseInt(item.getItemId()));
+            preparedStatement.executeUpdate();
             connection.commit();
-            return result;
+            return true;
 
         } catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
             log.log(Level.SEVERE, e.getMessage());
-            result = 0;
-            return result;
-        }
-        finally {
+            return false;
+
+        } finally {
             /*
              * Close prepared statement and database connectivity at the end of
-             * update
+             * insert
              */
             try {
                 if (preparedStatement != null) {
@@ -122,8 +174,8 @@ public class ItemServiceImpl implements IItemService {
                 log.log(Level.SEVERE, e.getMessage());
             }
         }
-
     }
+
 
     /**
      * Delete Items function is used to delete items from the database
@@ -144,11 +196,10 @@ public class ItemServiceImpl implements IItemService {
             connection.setAutoCommit(false);
 
             // assign values
-            preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, item.getItemCode());
+            preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, item.getItemId());
             result = preparedStatement.executeUpdate();
-            preparedStatement.executeUpdate();
-
             connection.commit();
+
             return result;
 
         } catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
@@ -183,17 +234,9 @@ public class ItemServiceImpl implements IItemService {
      * @throws SAXException
      */
 
-    public static List<Item> getItem() throws ClassNotFoundException, SQLException, ParserConfigurationException, SAXException {
+    public List<Item> getItem() throws ClassNotFoundException, SQLException, ParserConfigurationException, SAXException {
 
         ArrayList<Item> items = new ArrayList<>();
-
-        PreparedStatement preparedStatement = null;
-
-        String itemID = null;
-        String itemName=null;
-        String itemCode = null;
-        int quantity = 0;
-        double price = 0;
 
     try{
         connection = DBConnectionUtil.getDBConnection();
@@ -207,24 +250,17 @@ public class ItemServiceImpl implements IItemService {
 
         while (rs.next()) {
 
-            itemID = rs.getString(CommonConstants.COLUMN_INDEX_ONE);
-            itemName = rs.getString(CommonConstants.COLUMN_INDEX_TWO);
-            itemCode = rs.getString(CommonConstants.COLUMN_INDEX_THREE);
-            quantity = rs.getInt(CommonConstants.COLUMN_INDEX_FOUR);
-            price = rs.getDouble(CommonConstants.COLUMN_INDEX_FIVE);
+            Item item=new Item();
+
+            item.setItemId(rs.getString(CommonConstants.COLUMN_INDEX_ONE));
+            item.setItemName(rs.getString(CommonConstants.COLUMN_INDEX_TWO));
+            item.setQuantity(rs.getInt(CommonConstants.COLUMN_INDEX_THREE));
+            item.setPrice(rs.getDouble(CommonConstants.COLUMN_INDEX_FOUR));
+            int foreignKey=rs.getInt(CommonConstants.COLUMN_INDEX_FIVE);
+            item.setItemCode(rs.getString(CommonConstants.COLUMN_INDEX_SIX));
+
+            items.add(item);
         }
-
-        Item item=new Item();
-
-        item.setItemId(itemID);
-        item.setItemCode(itemCode);
-        item.setItemName(itemName);
-        item.setQuantity(quantity);
-        item.setPrice(price);
-
-        items.add(item);
-
-
     } catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
         log.log(Level.SEVERE, e.getMessage());
     }
@@ -246,8 +282,6 @@ public class ItemServiceImpl implements IItemService {
     }
         return items;
     }
-
-
     }
 
 
