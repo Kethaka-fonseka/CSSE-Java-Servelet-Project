@@ -79,11 +79,12 @@
 <nav class="navbar navbar-expand-lg navbar-light">
 	<div class=" container nav-con" >
 		<a class="navbar-brand" href="#"><img src="images/LogoLG.png" alt="BCConstuction Logo" width="220"></a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent2">
 			<ul class="navbar-nav ms-auto  mb-lg-0s m-auto">
 				<li class="nav-item dropdown">
 					<a class="nav-link" href="#">Orders</a>
@@ -119,11 +120,12 @@
 	<div class=" container nav-con" >
 		<a class="navbar-brand" href="#"><img src="images/LogoLG.png" alt="BCConstuction Logo" width="220"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				data-bs-target="#navbarSupportedContent3" aria-controls="navbarSupportedContent2"
+				aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent2">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent3">
 			<ul class="navbar-nav ms-auto  mb-lg-0s m-auto">
 				<li class="nav-item dropdown">
 					<a class="nav-link" href="#">Orders</a>
@@ -139,6 +141,42 @@
 					<ul class="dropdown-menu " aria-labelledby="itemDropdown">
 						<li><a class="dropdown-item" href="AddSupplierDetails.jsp">Add Requisitions</a></li>
 						<li><a class="dropdown-item" href="ViewSupplier.jsp">View Requisitions</a></li>
+					</ul>
+				</li>
+			</ul>
+
+			<form  class="ms-auto mt-3" method="POST" action="LogoutServlet">
+				<button type="submit"  class="btn sign-out-btn ">Sign Out</button>
+			</form>
+
+		</div>
+	</div>
+</nav>
+<% } else
+{
+%>
+<nav class="navbar navbar-expand-lg navbar-light">
+	<div class=" container nav-con" >
+		<a class="navbar-brand" href="#"><img src="images/LogoLG.png" alt="BCConstuction Logo" width="220"></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent4" aria-controls="navbarSupportedContent3"
+				aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent4">
+			<ul class="navbar-nav ms-auto  mb-lg-0s m-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link" href="#">Approvals</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="siteDropdown2" role="button"
+					   data-bs-toggle="dropdown" aria-expanded="false">
+						Site Management
+					</a>
+					<ul class="dropdown-menu " aria-labelledby="siteDropdown2">
+						<li><a class="dropdown-item" href="AddSiteDetails.jsp">Add Sites</a></li>
+						<li><a class="dropdown-item" href="BudgetList.jsp">View Sites</a></li>
 					</ul>
 				</li>
 			</ul>

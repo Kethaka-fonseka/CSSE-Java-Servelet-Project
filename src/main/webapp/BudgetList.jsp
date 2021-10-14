@@ -16,7 +16,7 @@
 
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="Head.jsp"/>
 <br><br><br>
 <div class="card m-5">
     <h1 style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Budget List</h1>
@@ -71,6 +71,6 @@
     </div>
 </div>
 <!-- FOOTER -->
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

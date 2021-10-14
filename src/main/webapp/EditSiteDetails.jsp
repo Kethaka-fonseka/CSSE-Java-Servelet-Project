@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="Head.jsp"/>
 <br><br><br>
 <div class="m-5 ">
     <h1>Edit Site Details</h1>

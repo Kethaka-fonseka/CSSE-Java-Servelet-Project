@@ -135,6 +135,34 @@ public class CommonConstants {
 	/** Constant for item validation Item Price */
 	public static final String ERROR_MESSAGE_ITEM_Quantity = "Enter Quantity";
 
+	/*SITE*/
+
+	/** Constant for query id of insert sites in Query.xml */
+	public static final String QUERY_ID_INSERT_SITES = "insert_sites";
+
+	/** Constant for query id of get a site in Query.xml */
+	public static final String QUERY_ID_GET_SITE = "site_by_id";
+
+	/** Constant for query id of update a site in Query.xml */
+	public static final String QUERY_ID_UPDATE_SITE = "update_site";
+
+	/** Constant for query id of remove a site in Query.xml */
+	public static final String QUERY_ID_REMOVE_SITE = "remove_site";
+
+	/** Constant for query id of get a site in Query.xml */
+	public static final String QUERY_GET_SITE = "site_get";
+
+	/** Constant for item validation Item Name */
+	public static final String ERROR_MESSAGE_SITE_NAME = "Enter Site Name";
+
+	/** Constant for item validation Item Location */
+	public static final String ERROR_MESSAGE_SITE_Location = "Enter Site Location";
+
+	/** Constant for item validation Item Budget */
+	public static final String ERROR_MESSAGE_SITE_Budget = "Enter Site Budget";
+
+	/** Constant for item validation Item Minimum Budget */
+	public static final String ERROR_MESSAGE_SITE_MINBudget = "Enter Site Min Budget";
 
 	public static final int COLUMN_INDEX_ONE = 1;
 	public static final int COLUMN_INDEX_TWO = 2;

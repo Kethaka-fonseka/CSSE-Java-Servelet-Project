@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="Head.jsp"/>
 <br><br><br>
 <div class="card m-5 text-white"  style="background-color: #000000">
     <h4 style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Add Site Details</h4>
@@ -58,6 +58,6 @@
     </form>
 </div>
 <!-- FOOTER -->
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>
