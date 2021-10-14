@@ -36,30 +36,6 @@ public class CommonConstants {
 	public static final String QUERY_ID_DROP_TABLE = "drop_table";
 
 	/** Constant for query id of create_table in Query.xml */
-	public static final String QUERY_ID_CREATE_TABLE = "create_item_table";
-
-	/** Constant for query id of insert items in Query.xml */
-	public static final String QUERY_ID_INSERT_ITEMS = "insert_item";
-
-	/** Constant for query id of get an item in Query.xml */
-	public static final String QUERY_ID_GET_ITEM = "item_by_id";
-	
-	public static final String QUERY_ID_GET_ITEMUSER = "item_by_user";
-	
-
-	/** Constant for query id of get all items in Query.xml */
-	public static final String QUERY_ID_ALL_ITEMS = "all_items";
-
-	/** Constant for query id of remove a item in Query.xml */
-	public static final String QUERY_ID_REMOVE_ITEM = "remove_item";
-
-	/** Constant for query id of update a item in Query.xml */
-	public static final String QUERY_ID_UPDATE_ITEM = "update_item";
-
-	/** Constant for query id of get all item ids in Query.xml */
-	public static final String QUERY_ID_GET_ITEM_IDS = "item_ids";
-
-	/** Constant for query id of create_table in Query.xml */
 	public static final String QUERY_ID_CREATE_TABLE2 = "create_category_table";
 
 	/** Constant for query id of add requisition  to requisition table */
@@ -72,8 +48,8 @@ public class CommonConstants {
 	/** Constant for query id of retrive  all requisitions*/
 	public static  final String QUERY_ID_ALL_REQUISITIONS="get_all_requisitions";
 
-/** Constant for query id delete  exiting requisition from id*/
-public static final String QUERY_ID_REMOVE_REQUISITION="remove_requisition";
+    /** Constant for query id delete  exiting requisition from id*/
+    public static final String QUERY_ID_REMOVE_REQUISITION="remove_requisition";
 
   
 /** Constant for query id of login in Query.xml */
@@ -106,8 +82,6 @@ public static final String QUERY_ID_REMOVE_REQUISITION="remove_requisition";
 /** Constant for query id of delete a Supplier in Query.xml */
 	public static final String QUERY_ID_UPDATE_SUPPLIER = "update_supplier";
 
-	/** Constant for query id of get an item in Query.xml */
-	public static final String QUERY_GET_ITEM = "item_get";
 
 
 	/*STAFF*/
@@ -128,6 +102,39 @@ public static final String QUERY_ID_REMOVE_REQUISITION="remove_requisition";
 
 	/** Constant for query id of delete a Supplier in Query.xml */
 	public static final String QUERY_ID_UPDATE_STAFF = "update_staff";
+
+	/*ITEM*/
+
+	/** Constant for query id of insert items in Query.xml */
+	public static final String QUERY_ID_INSERT_ITEMS = "insert_item";
+
+	/** Constant for query id of get an item in Query.xml */
+	public static final String QUERY_ID_GET_ITEM = "item_by_id";
+
+	/** Constant for query id of update a item in Query.xml */
+	public static final String QUERY_ID_UPDATE_ITEM = "update_item";
+
+	/** Constant for query id of remove a item in Query.xml */
+	public static final String QUERY_ID_REMOVE_ITEM = "remove_item";
+
+	/** Constant for query id of get an item in Query.xml */
+	public static final String QUERY_GET_ITEM = "item_get";
+
+	/** Constant for item validation */
+	public static final String ERROR_MESSAGE = "message";
+
+	/** Constant for item validation Item Name */
+	public static final String ERROR_MESSAGE_ITEM_NAME = "Enter Item Name";
+
+	/** Constant for item validation Item Code */
+	public static final String ERROR_MESSAGE_ITEM_Code = "Enter Item Code";
+
+	/** Constant for item validation Item Quantity */
+	public static final String ERROR_MESSAGE_ITEM_PRICE = "Enter Price";
+
+	/** Constant for item validation Item Price */
+	public static final String ERROR_MESSAGE_ITEM_Quantity = "Enter Quantity";
+
 
 	public static final int COLUMN_INDEX_ONE = 1;
 	public static final int COLUMN_INDEX_TWO = 2;

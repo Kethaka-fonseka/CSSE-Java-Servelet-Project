@@ -14,9 +14,28 @@
 <head>
     <title>View Items</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/toast.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            $("#openToast").toggleClass("hide view");
+
+            $('a.exit--toast').click(function() {
+                $("#openToast").fadeOut(1000, 0);
+            });
+
+            $(document).on('click', function (e) {
+                if ($(e.target).closest(".notification--reminder").length === 0) {
+                    $("#openToast").fadeOut(1000, 0);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<% Supplier sup = (Supplier) session.getAttribute("supplier"); %>
+<jsp:include page="Head.jsp"/>
 <div  class="card m-5">
     <h4  style="text-transform: uppercase; font-weight: 600" class="text-center  mb-2 pt-3">View Items</h4>
 
@@ -41,6 +60,8 @@
 
 
                 for(Item item : arrayList){
+                    if (item.getSupplierId() == Integer.parseInt(sup.getSupplierId()))
+                    {
             %>
             <tr class="align-content-center">
                 <td><%=item.getItemId() %></td>
@@ -84,12 +105,20 @@
                     </div>
 
                 </td>
-                    <% }%>
+                    <%} }%>
             </tbody>
         </table>
     </div>
 </div>
 <!-- FOOTER -->
 <jsp:include page="footer.jsp"/>
+<% if (request.getAttribute("Message") != null){ %>
+<div class="notification--wrapper hide" id="openToast">
+    <div class="notification--reminder ptb--20 text-center col-12">
+        <h3 class="toast-title"><%=request.getAttribute("Message")%> <a class="exit--toast"
+                                                                        href="javascript:void(0);">Got it.</a></h3>
+    </div>
+</div>
+<% } %>
 </body>
 </html>

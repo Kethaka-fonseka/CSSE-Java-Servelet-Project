@@ -1,3 +1,4 @@
+<%@ page import="com.csse.model.Supplier" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -6,7 +7,7 @@
 
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="Head.jsp"/>
 <br><br><br>
 <div class="m-5 ">
     <h1>Add Items</h1>
@@ -45,6 +46,9 @@
             <label  class="form-label">Price Per One</label>
             <input name="price" type="number" class="form-control" id="IPrice" placeholder="Price Per One">
         </div>
+            <% Supplier sup = (Supplier) session.getAttribute("supplier"); %>
+            <input  type="hidden" class="form-control"  name="sup_id" value ="<%=sup.getSupplierId() %>" >
+
 
 
         <div class="col-12">
@@ -54,6 +58,6 @@
     </form>
 </div>
 <!-- FOOTER -->
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

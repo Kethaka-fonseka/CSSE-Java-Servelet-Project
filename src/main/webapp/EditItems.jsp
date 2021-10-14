@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="Head.jsp"/>
 <br><br><br>
 <div class="m-5 ">
     <h1>Edit Items</h1>
@@ -49,6 +49,6 @@
     </form>
 </div>
 <!-- FOOTER -->
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -43,18 +43,11 @@ public class EditItemServelet extends HttpServlet {
         try {
             IItemService iItemService = new ItemServiceImpl();
             Item item= iItemService.editItem(Id);
-
             request.setAttribute("item",item);
             RequestDispatcher dis = request.getRequestDispatcher("EditItems.jsp");
             dis.forward(request, response);
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
+        } catch (ClassNotFoundException | SQLException | ParserConfigurationException | SAXException e) {
             e.printStackTrace();
         }
 

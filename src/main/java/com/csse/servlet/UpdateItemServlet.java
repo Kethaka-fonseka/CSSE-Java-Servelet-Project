@@ -65,7 +65,10 @@ public class UpdateItemServlet extends HttpServlet {
             IItemService iItemService = new ItemServiceImpl();
 
             if(iItemService.updateItem(item)){
-                response.sendRedirect("http://localhost:8080/BCConstruction/ViewItems.jsp");
+                request.setAttribute("Message","item updated Successfully!");
+//            response.sendRedirect("/ViewItems.jsp");
+             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/ViewItems.jsp");
+             requestDispatcher.forward(request, response);
             }
 
         }

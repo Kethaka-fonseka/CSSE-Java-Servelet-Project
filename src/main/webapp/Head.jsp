@@ -97,8 +97,8 @@
 						Manage Items
 					</a>
 					<ul class="dropdown-menu " aria-labelledby="itemDropdown">
-						<li><a class="dropdown-item" href="AddSupplierDetails.jsp">Add Items</a></li>
-						<li><a class="dropdown-item" href="ViewSupplier.jsp">View Items</a></li>
+						<li><a class="dropdown-item" href="AddItemsDetails.jsp">Add Items</a></li>
+						<li><a class="dropdown-item" href="ViewItems.jsp">View Items</a></li>
 					</ul>
 				</li>
 			</ul>

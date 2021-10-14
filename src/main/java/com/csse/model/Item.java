@@ -1,22 +1,23 @@
 package com.csse.model;
 
 public class Item {
-    private String companyName;
+    private int supplierId;
     private String itemName;
     private String itemCode;
     private String ItemId;
     private int quantity;
+
     private double price;
 
     public Item() {
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public int getSupplierId() {
+        return supplierId;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setSupplierId(int supplierId) {
+        this.supplierId = supplierId;
     }
 
     public String getItemId() {

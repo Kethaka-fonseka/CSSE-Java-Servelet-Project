@@ -46,7 +46,7 @@ public class ItemServiceImpl implements IItemService {
             preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, item.getItemName());
             preparedStatement.setInt(CommonConstants.COLUMN_INDEX_TWO, item.getQuantity());
             preparedStatement.setDouble(CommonConstants.COLUMN_INDEX_THREE, item.getPrice());
-            preparedStatement.setInt(CommonConstants.COLUMN_INDEX_FOUR, 1);
+            preparedStatement.setInt(CommonConstants.COLUMN_INDEX_FOUR, item.getSupplierId());
             preparedStatement.setString(CommonConstants.COLUMN_INDEX_FIVE, item.getItemCode());
             preparedStatement.execute();
             connection.commit();
@@ -256,7 +256,7 @@ public class ItemServiceImpl implements IItemService {
             item.setItemName(rs.getString(CommonConstants.COLUMN_INDEX_TWO));
             item.setQuantity(rs.getInt(CommonConstants.COLUMN_INDEX_THREE));
             item.setPrice(rs.getDouble(CommonConstants.COLUMN_INDEX_FOUR));
-            int foreignKey=rs.getInt(CommonConstants.COLUMN_INDEX_FIVE);
+            item.setSupplierId(rs.getInt(CommonConstants.COLUMN_INDEX_FIVE));
             item.setItemCode(rs.getString(CommonConstants.COLUMN_INDEX_SIX));
 
             items.add(item);

@@ -26,6 +26,7 @@ public class DeleteItemServlet extends HttpServlet {
         IItemService iItemService = new ItemServiceImpl();
 
         if(iItemService.deleteItem(item) == 1){
+            request.setAttribute("Message","Item Successfully Deleted!");
             response.sendRedirect("http://localhost:8080/BCConstruction/ViewItems.jsp");
         }
     }

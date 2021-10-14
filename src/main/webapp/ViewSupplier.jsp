@@ -55,6 +55,7 @@
             IRegisterService iRegisterService = new RegisterServiceImpl();
             ArrayList<Supplier> arrayList = iRegisterService.getSuppliers();
             for(Supplier supplier : arrayList){
+
         %>
         <tr class="align-content-center">
             <td><%=supplier.getSupplierId() %></td>
