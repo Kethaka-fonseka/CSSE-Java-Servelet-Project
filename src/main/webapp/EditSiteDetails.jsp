@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.csse.model.Site" %><%--
   Created by IntelliJ IDEA.
   User: Ushan
   Date: 10/4/2021
@@ -17,36 +17,36 @@
 <br><br><br>
 <div class="m-5 ">
     <h1>Edit Site Details</h1>
-    <form>
-        <div class="col-6">
-            <label  class="form-label">Site ID</label>
-            <input type="text" class="form-control" id="inputSid" placeholder="Site ID">
-        </div>
+    <form action="UpdateSiteServlet" method="post">
+        <%
+            Site s= (Site) request.getAttribute("site");
+        %>
 
+        <input hidden name="siteId" type="text" class="form-control" value="<%=s.getSiteId()%>">
         <div class="col-6">
             <label  class="form-label">Site Name</label>
-            <input type="text" class="form-control" id="inputSname" placeholder="Site Name">
+            <input name="siteName" type="text" class="form-control" id="inputSname" value="<%=s.getSiteName()%>" placeholder="Site Name">
         </div>
 
         <div class="col-6">
-            <label  class="form-label">Site Address</label>
-            <input type="text" class="form-control" id="inputSAddress" placeholder="Site Address">
+            <label  class="form-label">Site Location</label>
+            <input name="siteLocation" type="text" class="form-control" id="inputSLocation" value="<%=s.getSiteLocation()%>" placeholder="Site Location">
         </div>
 
         <div class="col-6">
-            <label  class="form-label">Site Contact No</label>
-            <input type="text" class="form-control" id="inputSConNo" placeholder="Site Contact No">
+            <label  class="form-label">Site Budget</label>
+            <input name="siteBudget" type="text" class="form-control" id="inputSAddress" value="<%=s.getSiteBudget()%>" placeholder="Site Budget">
         </div>
 
         <div class="col-6">
-            <label  class="form-label">Budget Amount</label>
-            <input type="text" class="form-control" id="inputbudget" placeholder="Budget Amount">
+            <label  class="form-label">Site Min Budget</label>
+            <input name="minBudget" type="text" class="form-control" id="inputSConNo" value="<%=s.getMinBudget()%>" placeholder="Site Min Budget">
         </div>
 
+            <div>
+                <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
 
-        <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
-        </div>
 
     </form>
 </div>

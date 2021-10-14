@@ -9,14 +9,16 @@
 <html>
 <head>
     <title>Purchase Order History</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <br><br><br>
-<div class="m-5">
-    <h1>Purchase Order List</h1>
-    <table class="table">
+<div class="card m-5">
+    <h1 style="text-transform: uppercase; font-weight: 600" class="text-center  mb-2 pt-3">Purchase Order List</h1>
+    <div class="card m-5">
+    <table class="table table-dark table-hover">
         <thead>
         <tr>
             <th scope="col">Reference ID</th>
@@ -31,7 +33,7 @@
 
         </tr>
         </thead>
-        <tbody>
+        <tbody class="align-middle">
         <tr>
             <th scope="row">1</th>
             <td>Mark</td>
@@ -42,27 +44,19 @@
             <td>@mdo</td>
             <td>@mdo</td>
             <td>
-                <li><a href="ViewApprovePurchaseOrder.jsp">Update</a></li>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
+                <div class="d-flex gap-3 ">
+                    <div>
+<%--                        <form>--%>
+<%--                            <input type="submit" value="Update" class="icon btn-success" />--%>
+<%--                        </form>--%>
+                        <button class="btn btn-success"><i class="fa fa-pencil-square-o"></i></button>
+                    </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
+                    <div >
+<%--                        <form>--%>
+<%--                            <input type="submit" value="Delete" class="btn btn-danger" />--%>
+<%--                        </form>--%>
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                     </div>
                 </div>
             </td>
@@ -77,33 +71,28 @@
             <td>@fat</td>
             <td>Jacob</td>
             <td>
-                <li><a href="ViewApprovePurchaseOrder.jsp">Update</a></li>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
+                <div class="d-flex gap-3 ">
+                    <div>
+<%--                        <form>--%>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
+<%--                            <input type="submit" value="Update" class="btn btn-success" />--%>
+<%--                            --%>
+<%--                        </form>--%>
+                            <button class="btn btn-success"><i class="fa fa-pencil-square-o"></i></button>
+                    </div>
+
+                    <div >
+<%--                        <form>--%>
+<%--                            <input type="submit" value="Delete" class="btn btn-danger" />--%>
+<%--                        </form>--%>
+                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                     </div>
                 </div>
             </td>
         </tr>
         </tbody>
     </table>
+    </div>
 </div>
 <!-- FOOTER -->
 <jsp:include page="footer.jsp"></jsp:include>
