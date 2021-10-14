@@ -10,25 +10,40 @@
 <br><br><br>
 <div class="m-5 ">
     <h1>Add Items</h1>
+
+
+
     <form action="AddItemServlet" method="post">
+        <%
+            String message= (String) request.getAttribute("message");
+
+
+            if(message!=null)  {
+        %>
+        <%=message%>
+        <%
+            }
+        %>
+
+
         <div class="col-6">
             <label  class="form-label">Item Name</label>
-            <input name="itemName" type="text" class="form-control" id="inputIname" placeholder="Item Name">
+            <input name="itemName" type="text" class="form-control" id=Iname" placeholder="Item Name">
         </div>
 
         <div class="col-6">
             <label  class="form-label">Item Code</label>
-            <input name="itemCode" type="text" class="form-control" id="inputCode" placeholder="Item Code">
+            <input name="itemCode" type="text" class="form-control" id="ICode" placeholder="Item Code">
         </div>
 
         <div class="col-6">
             <label  class="form-label">Quantity</label>
-            <input name="quantity" type="number" class="form-control" id="inputQuantity" placeholder="Quantity">
+            <input name="quantity" type="number" class="form-control" id="IQuantity" placeholder="Quantity">
         </div>
 
         <div class="col-6">
             <label  class="form-label">Price Per One</label>
-            <input name="price" type="number" class="form-control" id="inputPrice" placeholder="Price Per One">
+            <input name="price" type="number" class="form-control" id="IPrice" placeholder="Price Per One">
         </div>
 
 

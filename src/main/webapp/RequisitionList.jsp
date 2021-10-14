@@ -17,11 +17,13 @@
 
 </head>
 <body>
-<div class="class=site-wrap">
-  <jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="header.jsp"></jsp:include>
+<div class="card m-5">
+
   <br><br><br>
-  <h1>Requisition List</h1>
-  <table class="table">
+  <h1 style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Requisition List</h1>
+  <div class="card m-5">
+  <table class="table table-dark table-hover">
     <thead>
     <tr>
       <th scope="col">ID</th>
@@ -35,7 +37,7 @@
 
     </tr>
     </thead>
-    <tbody>
+    <tbody class="align-middle">
     <%
       ArrayList<Requisition> requisitions=(ArrayList<Requisition>) request.getAttribute("requisitions");
       for(Requisition list:requisitions){
@@ -50,36 +52,18 @@
       <td><%=list.getStatus()%></td>
       <td>
         <form action="GetRequisitionByIDServlet" method="post">
-       <button  name="id" type="submit" value=<%=list.getRequisitionNo()%>>Update</button>
+       <button class="btn btn-success" name="id" type="submit" value=<%=list.getRequisitionNo()%>><i class="fa fa-pencil-square-o"></i></button>
         </form>
         <form action="DeleteRequisitionServlet"method="post">
-        <button type="submit"  name="id" value=<%=list.getRequisitionNo()%> >Delete</button>
+        <button class="btn btn-danger" type="submit"  name="id" value=<%=list.getRequisitionNo()%> ><i class="fa fa-trash"></i></button>
         </form>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </td>
     </tr>
 <%}%>
     </tbody>
   </table>
+  </div>
 </div>
 <!-- FOOTER -->
 <jsp:include page="footer.jsp"></jsp:include>

@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.csse.model.Site" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.csse.service.SiteServiceImpl" %>
+<%@ page import="com.csse.service.SiteService" %><%--
   Created by IntelliJ IDEA.
   User: Ushan
   Date: 10/4/2021
@@ -15,12 +18,12 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <br><br><br>
-<div class="m-5">
-    <h1>Budget List</h1>
-    <table class="table">
+<div class="card m-5">
+    <h1 style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Budget List</h1>
+    <div class="card m-5">
+    <table class="table table-dark table-hover">
         <thead>
         <tr>
-            <th scope="col">ID</th>
             <th scope="col">Site Name</th>
             <th scope="col">Site Address</th>
             <th scope="col">Site Contract No</th>
@@ -28,73 +31,44 @@
             <th scope="col">Actions</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>
-                <li><a href="EditSiteDetails.jsp">Update</a></li>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
+        <tbody class="align-middle">
+        <%
+            SiteService siteService = new SiteServiceImpl();
+            List<Site> arrayList = siteService.getSite();
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
+
+            for(Site site : arrayList){
+        %>
+        <tr>
+
+            <td><%=site.getSiteName()%></td>
+            <td><%=site.getSiteLocation()%></td>
+            <td><%=site.getSiteBudget()%></td>
+            <td><%=site.getMinBudget()%></td>
+            <td>
+                <div class="d-flex gap-3 justify-content-center">
+                    <div>
+                        <form method="POST" action="EditSiteServlet">
+                            <input type="hidden" name="id" value="<%=site.getSiteId()%>" />
+                            <input type="submit" value="Update" class="btn btn-dark" />
+                        </form>
+                    </div>
+
+                    <div >
+                        <form method="post" action="DeleteSiteServlet">
+                            <input type="hidden" name="id" value="<%=site.getSiteId()%>" />
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        </form>
                     </div>
                 </div>
+
+
             </td>
 
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Jacob</td>
-            <td>
-                <li><a href="EditSiteDetails.jsp">Update</a></li>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
+                <% }%>
         </tbody>
     </table>
+    </div>
 </div>
 <!-- FOOTER -->
 <jsp:include page="footer.jsp"></jsp:include>

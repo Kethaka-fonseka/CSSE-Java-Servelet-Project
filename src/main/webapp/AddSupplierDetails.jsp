@@ -12,7 +12,7 @@
 <body>
 <jsp:include page="header.jsp"/>
 
-<div class="card m-5"  style="background-color: #ececec">
+<div class="card m-5 text-white"  style="background-color: #000000">
     <h4  style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Add Suppliers</h4>
     <form method="POST" action="AddUserServlet">
  <div class="d-grid gap-2 card-body pt-2 p-5">

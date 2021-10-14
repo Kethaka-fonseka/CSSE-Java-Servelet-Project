@@ -382,4 +382,42 @@
         ]]>
 	</query>
 
+<!--	Insert site details-->
+	<query id="insert_sites">
+		<![CDATA[
+          	insert into sites (site_name, site_location, site_budget, minimum_budget)
+          	values (?, ?, ?, ?)
+        ]]>
+	</query>
+
+	<!-- Select all sites -->
+	<query id="site_get">
+		<![CDATA[
+            select * from sites
+        ]]>
+	</query>
+
+	<!-- Delete a particular site by id Query -->
+	<query id="remove_site">
+		<![CDATA[
+            delete from sites s where s.site_id = ?
+        ]]>
+	</query>
+
+	<!-- Select a particular site by id Query -->
+	<query id="site_by_id">
+		<![CDATA[
+            select * from sites where site_id = ?
+        ]]>
+	</query>
+
+	<!-- Update a particular site by id Query -->
+	<query id="update_site">
+		<![CDATA[
+            update sites as s
+            set s.site_name = ?, s.site_location = ?, s.site_budget = ?, s.minimum_budget = ?
+            where s.site_id = ?
+        ]]>
+	</query>
+
 </xml>

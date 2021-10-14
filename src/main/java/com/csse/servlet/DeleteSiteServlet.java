@@ -1,9 +1,11 @@
 package com.csse.servlet;
 
 import com.csse.model.Item;
+import com.csse.model.Site;
 import com.csse.service.IItemService;
 import com.csse.service.ItemServiceImpl;
-import org.xml.sax.SAXException;
+import com.csse.service.SiteService;
+import com.csse.service.SiteServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,19 +13,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.sql.SQLException;
 
-@WebServlet("/EditItemServlet")
-public class EditItemServelet extends HttpServlet {
-    public EditItemServelet() {
-        super();
-    }
+@WebServlet("/DeleteSiteServlet")
+public class DeleteSiteServlet extends HttpServlet {
+
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      *      response)
      */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -37,26 +36,20 @@ public class EditItemServelet extends HttpServlet {
 
         response.setContentType("text/html");
 
-        //set data to the variables
-        String Id = request.getParameter("id");
+        Site site = new Site();
+        site.setSiteId(request.getParameter("id"));
+        System.out.println(site.getSiteId());
 
-        try {
-            IItemService iItemService = new ItemServiceImpl();
-            Item item= iItemService.editItem(Id);
+        SiteService siteService = new SiteServiceImpl();
+        siteService.deleteSite(site);
+        System.out.println(site.getSiteId());
 
-            request.setAttribute("item",item);
-            RequestDispatcher dis = request.getRequestDispatcher("EditItems.jsp");
-            dis.forward(request, response);
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
+        request.setAttribute("site", site);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/BudgetList.jsp");
+        dispatcher.forward(request, response);
 
     }
+
+
 }

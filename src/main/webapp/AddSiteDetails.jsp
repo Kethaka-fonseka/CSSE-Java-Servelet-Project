@@ -15,39 +15,46 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <br><br><br>
-<div class="m-5 ">
-    <h1>Add Site Details</h1>
-    <form>
-        <div class="col-6">
-            <label  class="form-label">Site ID</label>
-            <input type="text" class="form-control" id="inputSid" placeholder="Site ID">
-        </div>
+<div class="card m-5 text-white"  style="background-color: #000000">
+    <h4 style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Add Site Details</h4>
+    <form  action="AddSiteServlet" method="post">
+        <%
+            String message= (String) request.getAttribute("message");
 
-        <div class="col-6">
+
+            if(message!=null)  {
+        %>
+        <%=message%>
+        <%
+            }
+        %>
+        <div class="d-grid gap-2 card-body pt-2 p-5">
+        <div>
             <label  class="form-label">Site Name</label>
-            <input type="text" class="form-control" id="inputSname" placeholder="Site Name">
+            <input name="siteName" type="text" class="form-control" id="Sname" placeholder="Site Name">
         </div>
 
-        <div class="col-6">
-            <label  class="form-label">Site Address</label>
-            <input type="text" class="form-control" id="inputSAddress" placeholder="Site Address">
+        <div>
+            <label  class="form-label">Site Location</label>
+            <input name="siteLocation" type="text" class="form-control" id="SLocation" placeholder="Site Location">
         </div>
 
-        <div class="col-6">
-            <label  class="form-label">Site Contact No</label>
-            <input type="text" class="form-control" id="inputSConNo" placeholder="Site Contact No">
+        <div>
+            <label  class="form-label">Site Budget</label>
+            <input name="siteBudget" type="number" class="form-control" id="SBudget" placeholder="Budget">
         </div>
 
-        <div class="col-6">
-            <label  class="form-label">Budget Amount</label>
-            <input type="text" class="form-control" id="inputbudget" placeholder="Budget Amount">
+        <div>
+            <label  class="form-label">Site Minimum Budget</label>
+            <input name="minBudget" type="number" class="form-control" id="minBudget" placeholder="Minimum Budget">
         </div>
 
 
-        <div class="col-12">
+
+        <div>
             <button class="btn btn-primary" type="submit">Submit form</button>
         </div>
-
+        </div>
     </form>
 </div>
 <!-- FOOTER -->

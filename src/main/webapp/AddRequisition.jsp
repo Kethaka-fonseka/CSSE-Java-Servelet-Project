@@ -6,16 +6,17 @@
 
 </head>
 <body>
-<div>
-
+<div class="card m-5 text-white"  style="background-color: #000000">
+  <h4  style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Add Requisition</h4>
   <form method="POST" action="AddRequisionServlet">
+      <div class="d-grid gap-2 card-body pt-2 p-5">
    <%--<div class="col-6">
       <label  class="form-label">Requisition No</label>
       <input type="text" class="form-control" id="inputNumber" placeholder="Requisition No">
     </div>--%>
 
-    <div class="col-md-6">
-      <label for="inputState" class="form-label">Requisition Type</label>
+    <div>
+      <label for="inputState" class="form-label\">Requisition Type</label>
       <select name="requisitionType" id="inputState" class="form-select">
         <option selected>Choose...</option>
         <option value="type1">type1</option>
@@ -24,19 +25,19 @@
       </select>
     </div>
 
-    <div class="col-6">
-      <label  class="form-label">Requisition By</label>
+    <div>
+      <label  class="form-label\">Requisition By</label>
       <input type="text" name="requestedBy" class="form-control" id="inputReqBy" placeholder="Requisition By">
     </div>
 
-    <div class="col-md-6">
-      <label for="inputState" class="form-label">Site Location</label>
+    <div>
+      <label for="inputState" class="form-label\">Site Location</label>
       <select name="siteLocation" id="inputLocation" class="form-select">
         <option value="colombo">Colombo</option>
       </select>
     </div>
 
-    <div class="col-md-6">
+    <div>
       <label for="inputState" class="form-label">Item</label>
       <select name="itemName" id="inputItem" class="form-select">>
         <option value="sand">Sand</option>
@@ -45,25 +46,25 @@
       </select>
     </div>
 
-    <div class="col-6">
+    <div>
       <label  class="form-label">Quantity</label>
       <input type="text" name="itemQty" class="form-control" id="inputQTY" placeholder="Quantity">
     </div>
 
-    <div class="col-6">
+    <div>
       <label  class="form-label">Requesting Price</label>
       <input type="text" class="form-control"  name="requestedPrice" id="inputRate" placeholder="Requesting price">
     </div>
 
 
-    <div class="col-12">
+    <div>
       <label  class="form-label">Action</label>
       <div class="form-check">
         <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" >
         <label class="form-check-label" for="invalidCheck3">
           Send To Approval
         </label>
-        <div id="invalidCheck3Feedback" class="invalid-feedback">
+        <div id="invalidCheck3Feedback" class="invalid-feedback text-white">
           You must agree before submitting.
         </div>
       </div>
@@ -72,7 +73,7 @@
     <div class="col-12">
       <button class="btn btn-primary" type="submit">Submit form</button>
     </div>
-
+      </div>
   </form>
 </div>
 

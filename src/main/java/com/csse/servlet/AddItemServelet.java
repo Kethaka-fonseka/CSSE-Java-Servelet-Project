@@ -3,6 +3,7 @@ package com.csse.servlet;
 import com.csse.model.Item;
 import com.csse.service.IItemService;
 import com.csse.service.ItemServiceImpl;
+import com.csse.util.CommonConstants;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -36,23 +37,44 @@ public class AddItemServelet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        response.setContentType("text/html");
-
         Item item = new Item();
 
-        //set data to the variables
-        item.setCompanyName(request.getParameter("companyName"));
-        item.setItemName(request.getParameter("itemName"));
-        item.setItemCode(request.getParameter("itemCode"));
-        item.setQuantity(Integer.parseInt(request.getParameter("quantity")));
-        item.setPrice(Double.parseDouble(request.getParameter("price")));
+        String i_name=request.getParameter("itemName");
+        String i_code=request.getParameter("itemCode");
+        String i_quantity=request.getParameter("quantity");
+        String i_price=request.getParameter("price");
 
-        IItemService iItemService = new ItemServiceImpl();
-        iItemService.addItem(item);
+        if (i_name.equals("")) {
+            request.setAttribute(CommonConstants.ERROR_MESSAGE, CommonConstants.ERROR_MESSAGE_ITEM_NAME);
+            RequestDispatcher dis = request.getRequestDispatcher("AddItemsDetails.jsp");
+            dis.forward(request, response);
 
-        //set attribute
-        request.setAttribute("item", item);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ViewItems.jsp");
-        dispatcher.forward(request, response);
+        } else if(i_code.equals("")){
+            request.setAttribute(CommonConstants.ERROR_MESSAGE, CommonConstants.ERROR_MESSAGE_ITEM_Code);
+            RequestDispatcher dis = request.getRequestDispatcher("AddItemsDetails.jsp");
+            dis.forward(request, response);
+        }
+        else if(i_quantity.equals("")){
+            request.setAttribute(CommonConstants.ERROR_MESSAGE, CommonConstants.ERROR_MESSAGE_ITEM_Quantity);
+            RequestDispatcher dis = request.getRequestDispatcher("AddItemsDetails.jsp");
+            dis.forward(request, response);
+        }
+        else if(i_price.equals("")){
+            request.setAttribute(CommonConstants.ERROR_MESSAGE, CommonConstants.ERROR_MESSAGE_ITEM_PRICE);
+            RequestDispatcher dis = request.getRequestDispatcher("AddItemsDetails.jsp");
+            dis.forward(request, response);
+
+        }else{
+            //set data to the variables
+            item.setItemName(i_name);
+            item.setItemCode(i_code);
+            item.setQuantity(Integer.parseInt(i_quantity));
+            item.setPrice(Double.parseDouble(i_price));
+
+            IItemService iItemService = new ItemServiceImpl();
+
+            if(iItemService.addItem(item))
+                response.sendRedirect("http://localhost:8081/BCConstruction/ViewItems.jsp");
+        }
     }
 }
