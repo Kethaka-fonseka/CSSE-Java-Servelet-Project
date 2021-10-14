@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import com.csse.model.Staff;
 import com.csse.model.Supplier;
 import com.csse.model.User;
 import com.csse.util.CommonConstants;
@@ -102,75 +103,33 @@ public class RegisterServiceImpl implements IRegisterService {
 		return res;
 	}
 
-	@Override
-	public boolean addStaff(User user, Supplier supplier) {
-		boolean res = false;
 
-		String userID = CommonUtil.generateUID(getUserIDs());
-		try {
-			connection = DBConnectionUtil.getDBConnection();
+@Override
+public boolean removeSupplier(String userID) {
 
-			preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_INSERT_USER));
-
-			connection.setAutoCommit(false);
-
-			user.setUserId(userID);
-
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, user.getUserId());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, user.getUserRole());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_THREE, user.getUserName());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_FOUR, user.getUserMail());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_FIVE, user.getUserPass());
-			boolean result = preparedStatement.execute();
-			connection.commit();
-			if(!result){
-				connection = DBConnectionUtil.getDBConnection();
-				preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_INSERT_STAFF));
-				preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, supplier.getCompanyName());
-				preparedStatement.setInt(CommonConstants.COLUMN_INDEX_TWO, supplier.getContactNumber());
-				preparedStatement.setString(CommonConstants.COLUMN_INDEX_THREE, user.getUserId());
-				res = preparedStatement.execute();
-				connection.commit();
-			}else{
-				System.out.println("Error");
-			}
-
-
-		}catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
-			log.log(Level.SEVERE, e.getMessage());
-		} finally {
-			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				log.log(Level.SEVERE, e.getMessage());
-			}
-		}
-
-		return res;
-	}
-
-/*
-	public void removeUser(String userID) {
+		boolean status = false;
 		if (userID != null && !userID.isEmpty()) {
 			try {
 				connection = DBConnectionUtil.getDBConnection();
-				preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_REMOVE_USER));
+				preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_REMOVE_SUPPLIER_1));
 				preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, userID);
-				preparedStatement.executeUpdate();
+				int i = preparedStatement.executeUpdate();
+				if(i != 0){
+					preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_REMOVE_SUPPLIER_2));
+					preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, userID);
+					int r = preparedStatement.executeUpdate();
+					if(r != 0){
+						status =true;
+					}
+				}
 			} catch (SQLException | SAXException | IOException | ParserConfigurationException
 					| ClassNotFoundException e) {
 				log.log(Level.SEVERE, e.getMessage());
 			} finally {
-				*/
-/*
+				/*
 				 * Close prepared statement and database connectivity at the end
 				 * of transaction
-				 *//*
+				 */
 
 				try {
 					if (preparedStatement != null) {
@@ -183,9 +142,10 @@ public class RegisterServiceImpl implements IRegisterService {
 					log.log(Level.SEVERE, e.getMessage());
 				}
 			}
+
 		}
+		return status;
 	}
-*/
 
 
 
@@ -213,7 +173,7 @@ public class RegisterServiceImpl implements IRegisterService {
 	 */
 	private ArrayList<Supplier> actionOnSupplier(String userID) {
 
-		ArrayList<Supplier> userList = new ArrayList<>();
+		ArrayList<Supplier> userList = new ArrayList<Supplier>();
 		try {
 			connection = DBConnectionUtil.getDBConnection();
 			if (userID != null && !userID.isEmpty()) {
@@ -221,24 +181,29 @@ public class RegisterServiceImpl implements IRegisterService {
 				preparedStatement = connection
 						.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_GET_SUPPLIER));
 				preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, userID);
+
 			}
 			else {
 				preparedStatement = connection
 						.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_ALL_SUPPLIERS));
 			}
-			ResultSet resultSet = preparedStatement.executeQuery();
+				ResultSet resultSet = preparedStatement.executeQuery();
 
-			while (resultSet.next()) {
-				Supplier Supplier = new Supplier();
+				while (resultSet.next()) {
+					Supplier Supplier = new Supplier();
 
-				Supplier.setUserId(resultSet.getString(CommonConstants.COLUMN_INDEX_ONE));
-				Supplier.setUserMail(resultSet.getString(CommonConstants.COLUMN_INDEX_TWO));
-				Supplier.setUserPass(resultSet.getString(CommonConstants.COLUMN_INDEX_THREE));
-				Supplier.setUserName(resultSet.getString(CommonConstants.COLUMN_INDEX_FOUR));
-				Supplier.setContactNumber(resultSet.getInt(CommonConstants.COLUMN_INDEX_FIVE));
-				Supplier.setCompanyName(resultSet.getString(CommonConstants.COLUMN_INDEX_SIX));
-				userList.add(Supplier);
-			}
+					Supplier.setUserId(resultSet.getString(CommonConstants.COLUMN_INDEX_ONE));
+					Supplier.setUserMail(resultSet.getString(CommonConstants.COLUMN_INDEX_TWO));
+					Supplier.setUserPass(resultSet.getString(CommonConstants.COLUMN_INDEX_THREE));
+					Supplier.setUserName(resultSet.getString(CommonConstants.COLUMN_INDEX_FOUR));
+					Supplier.setContactNumber(resultSet.getInt(CommonConstants.COLUMN_INDEX_FIVE));
+					Supplier.setCompanyName(resultSet.getString(CommonConstants.COLUMN_INDEX_SIX));
+					Supplier.setSupplierId(resultSet.getString(CommonConstants.COLUMN_INDEX_SEVEN));
+					Supplier.setUserRole(resultSet.getString(CommonConstants.COLUMN_INDEX_EIGHT));
+					userList.add(Supplier);
+				}
+
+
 		} catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
 			log.log(Level.SEVERE, e.getMessage());
 		} finally {
@@ -255,23 +220,28 @@ public class RegisterServiceImpl implements IRegisterService {
 		}
 		return userList;
 	}
-/*
-	@Override
-	public Supplier updateUser(String userID, Supplier Supplier) {
 
+	@Override
+	public boolean updateSupplier(String userID, Supplier Supplier) {
+        boolean res =false;
 		if (userID != null && !userID.isEmpty()) {
 			try {
 				connection = DBConnectionUtil.getDBConnection();
 				preparedStatement = connection
-						.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_UPDATE_USER));
+						.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_UPDATE_SUPPLIER));
 
-				preparedStatement.setString(CommonConstants.COLUMN_INDEX_SIX, Supplier.getuId());
-				preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, Supplier.getuName());
-				preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, Supplier.getuMail());
-				preparedStatement.setString(CommonConstants.COLUMN_INDEX_THREE, Supplier.getuPass());
-				preparedStatement.setString(CommonConstants.COLUMN_INDEX_FOUR, Supplier.getuR_Pass());
-				preparedStatement.setString(CommonConstants.COLUMN_INDEX_FIVE, Supplier.getU_type());
-				preparedStatement.executeUpdate();
+
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, Supplier.getUserName());
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, Supplier.getUserMail());
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_THREE, Supplier.getUserPass());
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_FOUR, Supplier.getCompanyName());
+				preparedStatement.setInt(CommonConstants.COLUMN_INDEX_FIVE, Supplier.getContactNumber());
+				preparedStatement.setString(CommonConstants.COLUMN_INDEX_SIX, userID);
+				int i  =preparedStatement.executeUpdate();
+				if(i!=0){
+					res = true;
+				}
+
 
 			} catch (SQLException | SAXException | IOException | ParserConfigurationException
 					| ClassNotFoundException e) {
@@ -289,8 +259,8 @@ public class RegisterServiceImpl implements IRegisterService {
 				}
 			}
 		}
-		return getUserByID(userID);
-	}*/
+		return res;
+}
 
 	@Override
 	public ArrayList<String> getUserIDs(){
@@ -364,48 +334,6 @@ public class RegisterServiceImpl implements IRegisterService {
 
 */
 
-/*	@Override
-	public Supplier getUserByName(String username) {
-		return Detailsgetter(username).get(0);
-	}*/
-/*
-	private ArrayList<Supplier> Detailsgetter(String username) {
-
-		ArrayList<Supplier> Details = new ArrayList<Supplier>();
-		try {
-			connection = DBConnectionUtil.getDBConnection();
-			preparedStatement = connection .prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_USERBY_NAME));
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, username);
-			ResultSet resultSet = preparedStatement.executeQuery();
-
-			while (resultSet.next()) {
-				Supplier Supplier = new Supplier();
-
-				Supplier.setuId(resultSet.getString(CommonConstants.COLUMN_INDEX_ONE));
-				Supplier.setuName(resultSet.getString(CommonConstants.COLUMN_INDEX_TWO));
-				Supplier.setuMail(resultSet.getString(CommonConstants.COLUMN_INDEX_THREE));
-				Supplier.setuPass(resultSet.getString(CommonConstants.COLUMN_INDEX_FOUR));
-				Supplier.setuR_Pass(resultSet.getString(CommonConstants.COLUMN_INDEX_FIVE));
-				Supplier.setU_type(resultSet.getString(CommonConstants.COLUMN_INDEX_SIX));
-
-				Details.add(Supplier);
-			}
-		} catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
-			log.log(Level.SEVERE, e.getMessage());
-		} finally {
-			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				log.log(Level.SEVERE, e.getMessage());
-			}
-		}
-		return Details;
-	}*/
 
 
 }

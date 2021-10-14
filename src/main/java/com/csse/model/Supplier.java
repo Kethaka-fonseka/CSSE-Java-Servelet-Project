@@ -4,6 +4,7 @@ public class Supplier {
     private String companyName;
     private int contactNumber;
     private String userId;
+    private String supplierId;
     private String userName;
     private String userRole;
     private String userPass;
@@ -63,5 +64,13 @@ public class Supplier {
 
     public void setUserMail(String userMail) {
         this.userMail = userMail;
+    }
+
+    public String getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(String supplierId) {
+        this.supplierId = supplierId;
     }
 }

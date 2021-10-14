@@ -14,16 +14,7 @@
     <script src="https://kit.fontawesome.com/7db8364a09.js"></script>
 
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-     <link rel="stylesheet" href="css/animate.min.css">
 
-
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/style.css">
     
     <style type="text/css">
  			   #item-container .row .col-lg-8 .col-sm-6 h6 {
@@ -44,17 +35,17 @@
     <div class="site-blocks-cover" data-aos="fade">
       <div class="container">
 
-        <div class="row align-items-center">
-          <div class="col-lg-5 text-center">
-            <div class="featured-hero-product w-100">
-              <h1 class="mb-2">LM CONSTRUCTIONS<br> <i class="fas fa-gavel"></i></h1>
+        <div class="d-flex justify-content-between row align-items-center ">
+          <div class="col-lg-5 col-xs-5 d-flex d-block">
+            <div class="featured-hero-product text-center">
+              <h1 >BC CONSTRUCTIONS <i class="fas fa-cog home-icon"></i></h1>
             </div>  
           </div>
           
-          <div class="col-lg-7 align-self-end text-center text-lg-right">
-            <img style="z-index: 100;" src="images/new/worker.png" alt="Image" class="img-fluid img-1">
+          <div class="d-flex col-lg-6  col-xs-6 justify-content-center align-self-end">
+            <img style="z-index: 100" src="images/new/worker.png" alt="Image"
+                 class="img-fluid img-1">
           </div>
-          
         </div>
       </div>
       

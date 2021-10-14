@@ -4,12 +4,9 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
-    <link rel="stylesheet" href="fonts/icons/style.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
 
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/7db8364a09.js"></script>
 
@@ -18,15 +15,13 @@
 
 </head>
 
-<div class="site-navbar bg-white py-2">
-
-
+<div class="site-navbar bg-white py-2 ">
     <div class="container">
         <div class="d-flex align-items-center justify-content-between">
             <div class="logo">
                 <div class="site-logo">
                     <a href="landPageCusView.jsp" class="js-logo-clone">
-                        <img src="images/Auction.png" id="mainLogo" style="width: 450px;height: 100px;"> </a>
+                        <img src="images/LogoLG.png" id="mainLogo" style="width: 300px;"> </a>
                 </div>
             </div>
             <div class="main-nav d-none d-lg-block">
@@ -121,12 +116,7 @@
                 </nav>
             </div>
             <div class="icons">
-                <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-
-<%--                <i class="fas fa-user-tie" style ="color:white;"></i>--%>
-                <button class="btnmen">Log out</button>
-
-
+                <button class="btnmen">Sign out</button>
             </div>
         </div>
     </div>

@@ -1,0 +1,23 @@
+@-webkit-keyframes flip {
+	from { -webkit-transform: rotateY(0deg);    }
+	to   { -webkit-transform: rotateY(-360deg); }
+}
+
+@keyframes flip {
+	from { -webkit-transform: rotateY(0deg);    }
+	to   { -webkit-transform: rotateY(-360deg); }
+}
+
+.flipper {
+	-webkit-animation-name: flip;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-duration: 10s;
+	animation-name: flip;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-duration:10s;
+	-webkit-transform-style: preserve-3d ;
+	transform-style: preserve-3d;
+}
+

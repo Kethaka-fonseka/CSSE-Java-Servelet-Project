@@ -47,7 +47,6 @@ public class QueryUtil extends CommonUtil {
 		 */
 
 
-
 		/* stream = QueryUtil.class.getClassLoader().getResourceAsStream("/Query.xml");
 		 * System.out.println(stream != null);
 		 * DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance() ;
@@ -57,7 +56,9 @@ public class QueryUtil extends CommonUtil {
 
 		InputStream stream = QueryUtil.class.getResourceAsStream(CommonConstants.QUERY_XML);
 	    /*Prints boolean statement which varies with availability of the Query.xml*/
-		System.out.println(stream != null);
+		if(stream != null){
+			System.out.println("Query.xml detected -->");
+		}
 
 		nodeList = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(stream).getElementsByTagName(CommonConstants.TAG_NAME);
 		/*

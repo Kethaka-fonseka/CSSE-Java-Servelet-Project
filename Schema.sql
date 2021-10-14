@@ -41,8 +41,7 @@ CREATE TABLE pro_staff(
 
 
  CREATE TABLE sites(
-
-		site_id int primary key AUTO_INCREMENT,
+		    site_id int primary key AUTO_INCREMENT,
                 site_name varchar(50) UNIQUE,
                 site_location varchar(50),
                 site_budget int,
@@ -60,4 +59,3 @@ CREATE TABLE site_managers(
 ); 
 
 
-	

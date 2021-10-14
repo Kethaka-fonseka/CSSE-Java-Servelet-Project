@@ -40,12 +40,12 @@ public class AddUserServlet extends HttpServlet {
 		IRegisterService iRegisterService = new RegisterServiceImpl();
 
 		if(!iRegisterService.addSupplier(user, supplier)){
-//		request.setAttribute("errMessage","Supplier Added Successfully!");
+		request.setAttribute("Message","Supplier Added Successfully!");
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/ViewSupplier.jsp");
 		requestDispatcher.forward(request, response);
 
 	}else{
-//			request.setAttribute("errMessage","There was an Error!");
+			request.setAttribute("Message","There was an Error!");
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/ViewSupplier.jsp");
 			requestDispatcher.forward(request, response);
 		}

@@ -2,7 +2,13 @@ package com.csse.servlet;
 
 
 import com.csse.model.LoginBean;
+import com.csse.model.Staff;
+import com.csse.model.Supplier;
+import com.csse.model.User;
+import com.csse.service.ILoginService;
 import com.csse.service.LoginServiceImpl;
+import com.csse.service.RegisterServiceImpl;
+import com.csse.service.StaffServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,17 +44,30 @@ public class LoginServlet extends HttpServlet {
 		LoginBean loginBean = new LoginBean();
 		loginBean.setUserEmail(userEmail);
 		loginBean.setUserPass(userPass);
-
 		LoginServiceImpl loginService = new LoginServiceImpl();
 
 		if (loginService.validate(loginBean)) {
 			HttpSession session = request.getSession();
-			if (session !=null) {
-				session.setAttribute("email",loginBean.getUserEmail());
-				out.print("Hello " + loginBean.getUserEmail());
+			ILoginService iLoginService = new LoginServiceImpl();
+			User user = iLoginService.getUserByEmail(userEmail);
+
+					session.setAttribute("user",user);
+					System.out.println("Hello " + user.getUserName());
+
+			if(user.getUserRole().equals("staff")){
+				Staff staff = new StaffServiceImpl().getStaffByID(user.getUserId());
+				session.setAttribute("staff",staff);
+				System.out.println("Hello " + staff.getUserName());
+
+			}else if(user.getUserRole().equals("supplier")){
+				Supplier supplier = new RegisterServiceImpl().getSupplierByID(user.getUserId());
+				session.setAttribute("supplier",supplier);
+				System.out.println("Hello " + supplier.getUserName());
+			}else{
+				System.out.println("there is another user role");
 			}
 
-			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/landPageCusView.jsp");
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Head.jsp");
 			requestDispatcher.forward(request, response);
 		}
 

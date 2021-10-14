@@ -14,19 +14,6 @@
         ]]>
 	</query>
 
-	<query id="insert_supplier">
-		<![CDATA[
-          	insert into suppliers(s_company_name, s_mob_num, u_id)
-          	values (?, ?, ?)
-        ]]>
-	</query>
-
-	<query id="insert_staff">
-		<![CDATA[
-          	insert into staff (p_mob_num, p_role, u_id)
-          	values (?, ?, ?)
-        ]]>
-	</query>
 
 	<query id="user_ids">
 		<![CDATA[
@@ -34,33 +21,105 @@
         ]]>
 	</query>
 
-
-	<query id="insert_item">
+	<query id="user_by_mail">
 		<![CDATA[
-          	insert into item (itemNo, title, category, condition_, brand, color, startDate, endDate, startPrice, buyPrice, reservePrice, desc_,user)
-          	values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
+            select * from users u where u_mail = ?
+        ]]>
+	</query>
+
+<!--SUPPLIER-->
+
+	<query id="insert_supplier">
+		<![CDATA[
+          	insert into suppliers(s_company_name, s_mob_num, u_id)
+          	values (?, ?, ?)
         ]]>
 	</query>
 
 	<query id="get_suppliers">
 		<![CDATA[
-          	select u.u_id, u.u_mail, u.u_pass, u.u_name,s.s_mob_num, s.s_company_name
+        select u.u_id, u.u_mail, u.u_pass, u.u_name,s.s_mob_num, s.s_company_name, s.s_id, u.u_role
 		from  suppliers  s
 		join  users u
-		on u.u_id = s.u_id;
+		on u.u_id = s.u_id
         ]]>
 	</query>
 
-
-	<!-- Select a particular item by username Query -->
-	<query id="log_user">
+	<query id="get_supplier">
 		<![CDATA[
-            select * from users where item.user = ?
+        	select u.u_id, u.u_mail, u.u_pass, u.u_name,s.s_mob_num, s.s_company_name, s.s_id, u.u_role
+        	from users u, suppliers s
+        	where u.u_id = ?
+        	AND u.u_id = s.u_id
         ]]>
 	</query>
 
+	<query id="delete_supplier_1">
+		<![CDATA[
+           DELETE FROM suppliers s WHERE s.u_id = ?;
+        ]]>
+	</query>
 
+	<query id="delete_supplier_2">
+		<![CDATA[
+          DELETE FROM users u WHERE u.u_id = ?;
+        ]]>
+	</query>
 
+	<query id="update_supplier">
+		<![CDATA[
+          UPDATE users u INNER JOIN suppliers  s ON (u.u_id = s.u_id)
+          SET
+          u.u_name = ? ,u.u_mail = ? ,u.u_pass = ?,s.s_company_name = ?,s.s_mob_num = ?
+          WHERE s.u_id = ?
+        ]]>
+	</query>
+
+	<!--STAFF MEMBER-->
+	<query id="insert_staff">
+		<![CDATA[
+          	insert into pro_staff (p_mob_num, p_role, u_id)
+          	values (?, ?, ?)
+        ]]>
+	</query>
+	<query id="get_staff">
+		<![CDATA[
+            select u.u_id, u.u_role, u.u_name, u.u_mail, u.u_pass, p.p_id, p.p_role, p.p_mob_num
+   			from  pro_staff  p
+   			join  users u
+   			on u.u_id = p.u_id
+        ]]>
+	</query>
+
+	<query id="get_member">
+		<![CDATA[
+        	select u.u_id, u.u_role, u.u_name, u.u_mail, u.u_pass, p.p_id, p.p_role, p.p_mob_num
+        	from users u, pro_staff p
+        	where u.u_id = ?
+        	AND u.u_id = p.u_id
+        ]]>
+	</query>
+
+	<query id="delete_staff_1">
+		<![CDATA[
+           DELETE FROM pro_staff p WHERE p.u_id = ?;
+        ]]>
+	</query>
+
+	<query id="delete_staff_2">
+		<![CDATA[
+          DELETE FROM users u WHERE u.u_id = ?;
+        ]]>
+	</query>
+
+	<query id="update_staff">
+		<![CDATA[
+          UPDATE users u INNER JOIN pro_staff p ON (u.u_id = p.u_id)
+          SET
+          u.u_name = ? ,u.u_mail = ? ,u.u_pass = ?,p.p_role = ?,p.p_mob_num = ?
+          WHERE p.u_id = ?
+        ]]>
+	</query>
 	<!-- Select a particular item by id Query -->
 	<query id="item_by_id">
 		<![CDATA[
@@ -202,58 +261,6 @@
           	values (?, ?, ?, ?, ?, ?)
         ]]>
 	</query>
-
-
-	<query id="user_by_id">
-		<![CDATA[
-            select * from user where user.uId = ?
-        ]]>
-	</query>
-
-	<query id="user_by_name">
-		<![CDATA[
-            select * from user where user.uName = ? 
-        ]]>
-	</query>
-
-	<!-- Select all users -->
-	<query id="all_users">
-		<![CDATA[
-            select * from user
-        ]]>
-	</query>
-
-	<!-- Validate all users -->
-	<query id="validate_user">
-		<![CDATA[
-            select * from user where user.uName =?
-        ]]>
-	</query>
-
-	<!-- Delete a particular item by id Query -->
-	<query id="remove_user">
-		<![CDATA[
-            delete from user where user.uId = ?
-        ]]>
-	</query>
-
-	<!-- Update a particular update user Query -->
-	<query id="update_user">
-		<![CDATA[
-            update user as u 
-            set u.uName = ?, u.uMail = ?, u.uPass = ?, u.uR_Pass = ?, u.u_type = ?
-            where u.uId = ?
-        ]]>
-	</query>
-
-	<!-- Get User IDs Query -->
-	<query id="user_ids">
-		<![CDATA[
-            select u.uId from user as u
-        ]]>
-	</query>
-
-
 
 	<!-- PAYMENT TABLE -->
 

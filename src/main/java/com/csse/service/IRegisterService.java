@@ -1,5 +1,6 @@
 package com.csse.service;
 
+import com.csse.model.Staff;
 import com.csse.model.Supplier;
 import com.csse.model.User;
 
@@ -10,11 +11,14 @@ public interface IRegisterService {
 
     boolean addSupplier(User user, Supplier supplier);
 
-    boolean addStaff(User user, Supplier supplier);
+
+    boolean removeSupplier(String userID);
 
     Supplier getSupplierByID(String supplierID);
 
     ArrayList<Supplier> getSuppliers();
+
+    boolean updateSupplier(String userID, Supplier Supplier);
 
     ArrayList<String> getUserIDs();
 }

@@ -1,4 +1,4 @@
-<%@ page import="com.csse.service.IRegisterService, com.csse.service.RegisterServiceImpl, com.csse.model.User, java.util.ArrayList, com.csse.model.Supplier" %><%--
+<%@ page import="com.csse.service.IRegisterService, com.csse.service.RegisterServiceImpl, com.csse.model.User, java.util.ArrayList, com.csse.model.Supplier, com.csse.service.IStaffService, com.csse.service.StaffServiceImpl, com.csse.model.Staff" %><%--
   Created by IntelliJ IDEA.
   User: Ushan
   Date: 10/4/2021
@@ -43,37 +43,37 @@
         <thead class="text-center">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Company Name</th>
-            <th scope="col">Supplier Name</th>
-            <th scope="col">Contact Number</th>
+            <th scope="col">User Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Position</th>
+            <th scope="col">Mobile Number</th>
             <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody class="text-center">
         <%
-            IRegisterService iRegisterService = new RegisterServiceImpl();
-            ArrayList<Supplier> arrayList = iRegisterService.getSuppliers();
-            for(Supplier supplier : arrayList){
+            IStaffService iStaffService = new StaffServiceImpl();
+            ArrayList<Staff> arrayList = iStaffService.getStaff();
+            for(Staff staff : arrayList){
         %>
         <tr class="align-content-center">
-            <td><%=supplier.getSupplierId() %></td>
-            <td><%=supplier.getCompanyName() %></td>
-            <td><%=supplier.getUserName() %></td>
-            <td><%=supplier.getContactNumber()%></td>
-            <td><%=supplier.getUserMail()%></td>
+            <td><%=staff.getStaffId() %></td>
+            <td><%=staff.getUserName() %></td>
+            <td><%=staff.getUserMail() %></td>
+            <td><%=staff.getPosition()%></td>
+            <td><%=staff.getMobileNumber()%></td>
             <td>
                 <div class="d-flex gap-3 justify-content-center">
                 <div>
-                    <form method="POST" action="GetSupplierServlet">
-                        <input type="hidden" name="user_id" value="<%=supplier.getUserId()%>" />
+                    <form method="POST" action="GetStaffMemberServlet">
+                        <input type="hidden" name="user_id" value="<%=staff.getUserId()%>" />
                         <input type="submit" value="Update" class="btn btn-dark" />
                     </form>
                 </div>
 
                 <div >
-                    <form method="POST" action="DeleteSupplierServlet">
-                        <input type="hidden" name="user_id" value="<%=supplier.getUserId()%>" />
+                    <form method="POST" action="DeleteStaffServlet">
+                        <input type="hidden" name="user_id" value="<%=staff.getUserId()%>" />
                         <input type="submit" value="Delete" class="btn btn-danger" />
                     </form>
                 </div>

@@ -79,14 +79,14 @@ public static final String QUERY_ID_REMOVE_REQUISITION="remove_requisition";
 /** Constant for query id of login in Query.xml */
 	public static final String QUERY_ID_GET_USER = "log_user";
 
+/** Constant for query id of login in Query.xml */
+	public static final String QUERY_ID_GET_USER_BY_MAIL = "user_by_mail";
+
 	/** Constant for query id of insert user in Query.xml */
 	public static final String QUERY_ID_INSERT_USER = "insert_user";
 
 	/** Constant for query id of insert supplier in Query.xml */
 	public static final String QUERY_ID_INSERT_SUP = "insert_supplier";
-
-	/** Constant for query id of insert supplier in Query.xml */
-	public static final String QUERY_ID_INSERT_STAFF = "insert_staff";
 
 	/** Constant for query id of get user ids in Query.xml */
 	public static final String QUERY_ID_GET_USER_IDS = "user_ids";
@@ -97,9 +97,37 @@ public static final String QUERY_ID_REMOVE_REQUISITION="remove_requisition";
 /** Constant for query id of get user ids in Query.xml */
 	public static final String QUERY_ID_ALL_SUPPLIERS = "get_suppliers";
 
+	/** Constant for query id of delete a Supplier in Query.xml */
+	public static final String QUERY_ID_REMOVE_SUPPLIER_1 = "delete_supplier_1";
+
+	/** Constant for query id of delete a Supplier in Query.xml */
+	public static final String QUERY_ID_REMOVE_SUPPLIER_2 = "delete_supplier_2";
+
+/** Constant for query id of delete a Supplier in Query.xml */
+	public static final String QUERY_ID_UPDATE_SUPPLIER = "update_supplier";
+
 	/** Constant for query id of get an item in Query.xml */
 	public static final String QUERY_GET_ITEM = "item_get";
 
+
+	/*STAFF*/
+	/** Constant for query id of insert supplier in Query.xml */
+	public static final String QUERY_ID_INSERT_STAFF = "insert_staff";
+
+	/** Constant for query id of insert supplier in Query.xml */
+	public static final String QUERY_ID_GET_STAFF = "get_staff";
+
+   /** Constant for query id of insert supplier in Query.xml */
+	public static final String QUERY_ID_GET_MEMBER = "get_member";
+
+	/** Constant for query id of delete a Supplier in Query.xml */
+	public static final String QUERY_ID_REMOVE_STAFF_1 = "delete_staff_1";
+
+	/** Constant for query id of delete a Supplier in Query.xml */
+	public static final String QUERY_ID_REMOVE_STAFF_2 = "delete_staff_2";
+
+	/** Constant for query id of delete a Supplier in Query.xml */
+	public static final String QUERY_ID_UPDATE_STAFF = "update_staff";
 
 	public static final int COLUMN_INDEX_ONE = 1;
 	public static final int COLUMN_INDEX_TWO = 2;
@@ -116,5 +144,5 @@ public static final String QUERY_ID_REMOVE_REQUISITION="remove_requisition";
 	public static final int COLUMN_INDEX_THIRTY = 13;
 
 
-	
+
 }

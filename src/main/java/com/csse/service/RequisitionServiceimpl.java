@@ -54,7 +54,7 @@ public class RequisitionServiceimpl implements IRequisitionService {
             preparedStatement.execute();
             connection.commit();
 
-        }catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+        }catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
             log.log(Level.SEVERE, e.getMessage());
         } finally {
             try {
@@ -95,7 +95,7 @@ public class RequisitionServiceimpl implements IRequisitionService {
                         .prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_REMOVE_REQUISITION));
                 preparedStatement.setInt(CommonConstants.COLUMN_INDEX_ONE, requisitionNo);
                 preparedStatement.executeUpdate();
-            } catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+            } catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
                 log.log(Level.SEVERE, e.getMessage());
             } finally {
                 /*
@@ -148,7 +148,7 @@ public class RequisitionServiceimpl implements IRequisitionService {
 
                requisitionsList.add(requisition);
             }
-        } catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
+        } catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
             log.log(Level.SEVERE, e.getMessage());
         } finally {
             try {
