@@ -45,4 +45,6 @@ import com.csse.model.Requisition;
 
 
         boolean updateRequisition(Requisition requisition);
+
+        boolean approvalRequisition(Requisition requisition);
     }

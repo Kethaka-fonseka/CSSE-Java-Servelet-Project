@@ -73,7 +73,7 @@
 
       <td>
 
-        <div class="d-flex gap-3 justify-content-center">
+        <div class="d-flex gap-3 mt-2 justify-content-center">
 			<% if(list.getStatus().equals("Pending")) {%>
           <div>
             <form action="GetRequisitionByIDServlet" method="post">
@@ -84,7 +84,7 @@
 			<% if(list.getStatus().equals("Approved")) {%>
 			<div>
             <form action="CheckOutRequsitionServlet" method="post">
-                <button class="btn btn-light" name="id" type="submit" >Check Out</button>
+                <button class="btn btn-light" name="id" type="submit" >CheckOut</button>
             </form>
           </div> <%} %>
 
