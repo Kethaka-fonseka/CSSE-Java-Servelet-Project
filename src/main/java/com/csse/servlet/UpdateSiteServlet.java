@@ -71,7 +71,7 @@ public class UpdateSiteServlet extends HttpServlet {
             SiteService siteService = new SiteServiceImpl();
 
             if(siteService.updateSite(site)){
-                response.sendRedirect("http://localhost:8081/BCConstruction/BudgetList.jsp");
+                response.sendRedirect("http://localhost:8080/BCConstruction/BudgetList.jsp");
             }
 
         }
