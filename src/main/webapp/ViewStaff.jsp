@@ -36,7 +36,7 @@
 <jsp:include page="Head.jsp"/>
 
 <div  class="card m-5">
-<h4  style="text-transform: uppercase; font-weight: 600" class="form-titles  text-center mb-2 pt-3">View Suppliers</h4>
+<h4  style="text-transform: uppercase; font-weight: 600" class="form-titles  text-center mb-2 pt-3">View Staff</h4>
 
 <div class="m-2" >
     <table class="table table-dark table-hover">

@@ -26,6 +26,8 @@ CREATE TABLE suppliers(
 				i_quantity int,
                 i_unit_price int,
 				s_id int NOT NULL,
+				i_code varchar(50),
+
                 CONSTRAINT supplier_item_fk FOREIGN KEY(s_id) REFERENCES suppliers(s_id)
 );	
 

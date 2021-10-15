@@ -83,8 +83,8 @@
 			<%} %>
 			<% if(list.getStatus().equals("Approved")) {%>
 			<div>
-            <form action="CheckOutRequsitionServlet" method="post">
-                <button class="btn btn-light" name="id" type="submit" >CheckOut</button>
+            <form action="CheckOutRequisitionServlet" method="post">
+                <button class="btn btn-light" name="id" type="submit" value="<%=list.getRequisitionNo()%>">CheckOut</button>
             </form>
           </div> <%} %>
 

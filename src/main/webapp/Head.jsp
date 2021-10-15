@@ -208,16 +208,16 @@
 </nav>
 <% } %>
 <%--Banners for each user role--%>
-<div class="container-fluid bg-light">
-	<div class="container" style="background-image: url(images/background.jpeg)" >
-	<div class="row align-items-center gx-5 ">
-		<div class="col-lg-5  col-md-5 d-lg-block d-md-block d-none bg-light">
-			<div  class="d-flex p-2 justify-content-end">
-				<img class="banner-logo flipper img-fluid " src="images/LogoLG-B.png" alt="Image" >
+<div class="container-fluid bg-light" style="background-image: url(images/background.jpeg); background-size: cover">
+	<div class="container"  >
+	<div class="row align-items-center  ">
+		<div class="col-lg-5  col-md-5 d-lg-block d-md-block d-none">
+			<div  class="d-flex justify-content-end align-items-end">
+				<img class="banner-logo flipper img-fluid " src="images/LogoLG-W.png" alt="Image" >
 			</div>
 		</div>
 		<div class="col-lg-7 col-md-7">
-			<div class="d-flex p-2  justify-content-center">
+			<div class="d-flex  justify-content-center">
 				<img src="images/new/worker.png" height="700" alt="Image">
 			</div>
 		</div>

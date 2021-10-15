@@ -71,7 +71,7 @@
 
 					<div class="d-flex gap-3 justify-content-center mt-2 align-self-center">
 						<div>
-							<form action="DeleteRequisitionServlet"method="post">
+							<form action="DeleteApprovalServlet"method="post">
 								<button class="btn btn-danger" type="submit" name="id"  value="<%=list.getRequisitionNo()%>"> Delete
 								</button>
 							</form>

@@ -32,7 +32,7 @@ public class AddStaffServlet extends HttpServlet {
         staff.setMobileNumber(Integer.parseInt(request.getParameter("mob_num")));
 
         IStaffService iStaffService = new StaffServiceImpl();
-
+        System.out.println(staff);
         if(!iStaffService.addStaff(staff)){
             request.setAttribute("Message","Staff Member Added Successfully!");
             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/ViewStaff.jsp");

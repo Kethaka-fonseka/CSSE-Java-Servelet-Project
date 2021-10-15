@@ -295,4 +295,17 @@
             where r.r_id = ?
         ]]>
 	</query>
-</xml>
+
+	<query id="insert_order">
+		<![CDATA[
+          	insert into orders(req_id, sup_id)
+          	values (?,?)
+        ]]>
+	</query>
+	<query id="get_order">
+		<![CDATA[
+          	insert into orders(req_id, sup_id)
+          	values (?,?)
+        ]]>
+	</query>
+'</xml>
