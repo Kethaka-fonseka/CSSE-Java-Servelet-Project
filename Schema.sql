@@ -7,6 +7,7 @@ CREATE TABLE users (
     
 );
 
+
 INSERT INTO users (u_id,u_role, u_name, u_mail, u_pass) VALUES ("E3001", "admin", "admin", "admin@gmail.com", "1234");
 
 
