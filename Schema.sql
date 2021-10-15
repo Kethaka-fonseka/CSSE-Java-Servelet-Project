@@ -50,9 +50,9 @@ CREATE TABLE pro_staff(
 
 CREATE TABLE site_managers(
 
-		m_id int primary key AUTO_INCREMENT,
+		        m_id int primary key AUTO_INCREMENT,
                 m_mob_num int,
-		site_name varchar(50) NOT NULL,
+		        site_name varchar(50) NOT NULL,
                 u_id varchar(50) NOT NULL,
                 CONSTRAINT site_manager_fk FOREIGN KEY(site_name) REFERENCES sites(site_name),
                 CONSTRAINT site_manager_user_fk FOREIGN KEY(u_id) REFERENCES users(u_id)

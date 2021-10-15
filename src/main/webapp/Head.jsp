@@ -58,8 +58,8 @@
 						Site Managers
 					</a>
 					<ul class="dropdown-menu " aria-labelledby="siteManagersDropdown1">
-						<li><a class="dropdown-item" href="#">Add Side Managers</a></li>
-						<li><a class="dropdown-item" href="#">View Side Managers</a></li>
+						<li><a class="dropdown-item" href="AddSiteManager.jsp">Add Site Managers</a></li>
+						<li><a class="dropdown-item" href="ViewManagers.jsp">View Site Managers</a></li>
 					</ul>
 				</li>
 			</ul>

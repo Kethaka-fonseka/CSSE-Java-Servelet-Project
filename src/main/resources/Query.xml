@@ -121,6 +121,52 @@
         ]]>
 	</query>
 
+	<!--SITE MANAGER-->
+	<query id="insert_manager">
+		<![CDATA[
+          	insert into site_managers (m_mob_num, site_name, u_id)
+          	values (?, ?, ?)
+        ]]>
+	</query>
+	<query id="get_managers">
+		<![CDATA[
+            select u.u_id, u.u_role, u.u_name, u.u_mail, u.u_pass, m.m_id, m.site_name, m.m_mob_num
+   			from  site_managers  m
+   			join  users u
+   			on u.u_id = m.u_id
+        ]]>
+	</query>
+
+	<query id="get_manager">
+		<![CDATA[
+        	select u.u_id, u.u_role, u.u_name, u.u_mail, u.u_pass, m.m_id, m.site_name, m.m_mob_num
+        	from users u, site_managers  m
+        	where u.u_id = ?
+        	AND u.u_id = m.u_id
+        ]]>
+	</query>
+
+	<query id="delete_manager_1">
+		<![CDATA[
+           DELETE FROM site_managers m WHERE m.u_id = ?;
+        ]]>
+	</query>
+
+	<query id="delete_manager_2">
+		<![CDATA[
+          DELETE FROM users u WHERE u.u_id = ?;
+        ]]>
+	</query>
+
+	<query id="update_manager">
+		<![CDATA[
+          UPDATE users u INNER JOIN site_managers m ON (u.u_id = m.u_id)
+          SET
+          u.u_name = ? ,u.u_mail = ? ,u.u_pass = ?,m.site_name = ?,m.m_mob_num = ?
+          WHERE m.u_id = ?
+        ]]>
+	</query>
+
 
 	<!--ITEM-->
 	<query id="insert_item">

@@ -103,6 +103,26 @@ public class CommonConstants {
 	/** Constant for query id of delete a Supplier in Query.xml */
 	public static final String QUERY_ID_UPDATE_STAFF = "update_staff";
 
+
+	/*SITE MANAGER*/
+	/** Constant for query id of insert supplier in Query.xml */
+	public static final String QUERY_ID_INSERT_MANAGER = "insert_manager";
+
+	/** Constant for query id of insert supplier in Query.xml */
+	public static final String QUERY_ID_GET_MANAGERS = "get_managers";
+
+   /** Constant for query id of insert supplier in Query.xml */
+	public static final String QUERY_ID_GET_MANAGER = "get_manager";
+
+	/** Constant for query id of delete a Supplier in Query.xml */
+	public static final String QUERY_ID_REMOVE_MANAGER_1 = "delete_manager_1";
+
+	/** Constant for query id of delete a Supplier in Query.xml */
+	public static final String QUERY_ID_REMOVE_MANAGER_2 = "delete_manager_2";
+
+	/** Constant for query id of delete a Supplier in Query.xml */
+	public static final String QUERY_ID_UPDATE_MANAGER = "update_manager";
+
 	/*ITEM*/
 
 	/** Constant for query id of insert items in Query.xml */
