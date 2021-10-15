@@ -14,6 +14,7 @@
 <head>
     <title>View Items</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/forms.css">
     <link rel="stylesheet" href="css/toast.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script>
@@ -37,11 +38,11 @@
 <% Supplier sup = (Supplier) session.getAttribute("supplier"); %>
 <jsp:include page="Head.jsp"/>
 <div  class="card m-5">
-    <h4  style="text-transform: uppercase; font-weight: 600" class="text-center  mb-2 pt-3">View Items</h4>
+    <h4  style="text-transform: uppercase; font-weight: 600" class="form-titles  text-center mb-2 pt-3">View Items</h4>
 
 
-    <div class="m-5" >
-        <table class="table ">
+    <div class="m-2" >
+        <table class="table table-dark table-hover">
             <thead class="text-center">
             <tr>
                 <th scope="col">Item ID</th>
@@ -63,7 +64,7 @@
                     if (item.getSupplierId() == Integer.parseInt(sup.getSupplierId()))
                     {
             %>
-            <tr class="align-content-center">
+            <tr class="align-middle text-center">
                 <td><%=item.getItemId() %></td>
                 <td><%=item.getItemCode() %></td>
                 <td><%=item.getItemName()%></td>
@@ -85,24 +86,7 @@
                             </form>
                         </div>
                     </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
                 </td>
                     <%} }%>
