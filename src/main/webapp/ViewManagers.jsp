@@ -33,8 +33,8 @@
 	<h4  style="text-transform: uppercase; font-weight: 600" class="form-titles  text-center mb-2 pt-3">View
 		Managers</h4>
 
-	<div class="m-5" >
-		<table class="table">
+	<div class="m-2" >
+		<table class="table table-dark table-hover">
 			<thead class="text-center">
 			<tr>
 				<th scope="col">ID</th>
@@ -51,7 +51,7 @@
 				ArrayList<Manager> arrayList = iManagerService.getManager();
 				for(Manager manager : arrayList){
 			%>
-			<tr class="align-content-center">
+			<tr class="align-middle text-center">
 				<td><%=manager.getManagerId() %></td>
 				<td><%=manager.getUserName() %></td>
 				<td><%=manager.getUserMail() %></td>
@@ -62,7 +62,7 @@
 						<div>
 							<form method="POST" action="GetManagerServlet">
 								<input type="hidden" name="user_id" value="<%=manager.getUserId()%>" />
-								<input type="submit" value="Update" class="btn btn-dark" />
+								<input type="submit" value="Update" class="btn btn-success" />
 							</form>
 						</div>
 
