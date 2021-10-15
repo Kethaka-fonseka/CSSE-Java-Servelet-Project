@@ -12,17 +12,19 @@
 <html>
 <head>
     <title>Budget List</title>
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/toast.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
 </head>
 <body>
 <jsp:include page="Head.jsp"/>
-<br><br><br>
-<div class="card m-5">
-    <h1 style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Budget List</h1>
-    <div class="card m-5">
+
+<div class="card m-5 ">
+    <h4  style="text-transform: uppercase; font-weight: 600" class="form-titles  text-center mb-2 pt-3">Budget List</h4>
+    <div class="m-2">
     <table class="table table-dark table-hover">
-        <thead>
+        <thead class="text-center">
         <tr>
             <th scope="col">Site Name</th>
             <th scope="col">Site Address</th>
@@ -31,7 +33,7 @@
             <th scope="col">Actions</th>
         </tr>
         </thead>
-        <tbody class="align-middle">
+        <tbody class="align-middle text-center">
         <%
             SiteService siteService = new SiteServiceImpl();
             List<Site> arrayList = siteService.getSite();
@@ -50,7 +52,7 @@
                     <div>
                         <form method="POST" action="EditSiteServlet">
                             <input type="hidden" name="id" value="<%=site.getSiteId()%>" />
-                            <input type="submit" value="Update" class="btn btn-dark" />
+                            <input type="submit" value="Update" class="btn btn-success" />
                         </form>
                     </div>
 
