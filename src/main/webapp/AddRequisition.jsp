@@ -2,21 +2,22 @@
 <html>
 <head>
     <title>Add Requisition</title>
+    <link rel="stylesheet" href="css/forms.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
 </head>
 <body>
-<div class="card m-5 text-white"  style="background-color: #000000">
-  <h4  style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Add Requisition</h4>
+<div class="container mt-3 rounded-3 text-white"  style="background-color: #333333">
+  <h3  class="form-titles text-center pt-4">Add Requisition</h3>
   <form method="POST" action="AddRequisionServlet">
-      <div class="d-grid gap-2 card-body pt-2 p-5">
+      <div class="d-grid gap-3 card-body pt-2 p-5">
    <%--<div class="col-6">
       <label  class="form-label">Requisition No</label>
       <input type="text" class="form-control" id="inputNumber" placeholder="Requisition No">
     </div>--%>
 
     <div>
-      <label for="inputState" class="form-label\">Requisition Type</label>
+      <label for="inputState" class="form-label">Requisition Type</label>
       <select name="requisitionType" id="inputState" class="form-select">
         <option selected>Choose...</option>
         <option value="type1">type1</option>
@@ -26,12 +27,12 @@
     </div>
 
     <div>
-      <label  class="form-label\">Requisition By</label>
+      <label  class="form-label">Requisition By</label>
       <input type="text" name="requestedBy" class="form-control" id="inputReqBy" placeholder="Requisition By">
     </div>
 
     <div>
-      <label for="inputState" class="form-label\">Site Location</label>
+      <label for="inputState" class="form-label">Site Location</label>
       <select name="siteLocation" id="inputLocation" class="form-select">
         <option value="colombo">Colombo</option>
       </select>
@@ -70,8 +71,8 @@
       </div>
     </div>
 
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit form</button>
+    <div class="text-center">
+      <button class="btn btn-light" type="submit">Submit form</button>
     </div>
       </div>
   </form>

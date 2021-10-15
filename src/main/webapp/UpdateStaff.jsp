@@ -9,7 +9,7 @@
 <%--HEADER--%>
 <jsp:include page="Head.jsp"/>
 
-<div class="container mt-3 rounded-3"  style="background-color: #ececec">
+<div class="container mt-3 rounded-3 text-white"  style="background-color: #333333">
 	<h3 class="form-titles text-center pt-4">Update Staff</h3>
 
 	<%
@@ -65,7 +65,7 @@
 			</div>
 
 			<div class="text-center">
-				<button class="btn btn-dark" type="submit">Update Supplier</button>
+				<button class="btn btn-light" type="submit">Update Supplier</button>
 			</div>
 		</div>
 	</form>

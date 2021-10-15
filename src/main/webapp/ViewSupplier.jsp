@@ -38,8 +38,8 @@
 <div  class="card m-5">
 <h4  style="text-transform: uppercase; font-weight: 600" class="form-titles  text-center mb-2 pt-3">View Suppliers</h4>
 
-<div class="m-5" >
-    <table class="table ">
+<div class="m-2" >
+    <table class="table table-dark table-hover ">
         <thead class="text-center">
         <tr>
             <th scope="col">ID</th>
@@ -57,7 +57,7 @@
             for(Supplier supplier : arrayList){
 
         %>
-        <tr class="align-content-center">
+        <tr class="align-middle text-center">
             <td><%=supplier.getSupplierId() %></td>
             <td><%=supplier.getCompanyName() %></td>
             <td><%=supplier.getUserName() %></td>
@@ -68,7 +68,7 @@
                 <div>
                     <form method="POST" action="GetSupplierServlet">
                         <input type="hidden" name="user_id" value="<%=supplier.getUserId()%>" />
-                        <input type="submit" value="Update" class="btn btn-dark" />
+                        <input type="submit" value="Update" class="btn btn-success" />
                     </form>
                 </div>
 

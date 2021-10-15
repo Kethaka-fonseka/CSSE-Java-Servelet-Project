@@ -8,36 +8,37 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <br><br><br>
-<div class="m-5 ">
-    <h1>Add Supplier Details</h1>
+<div class="container mt-3 rounded-3 text-white"  style="background-color: #333333">
+    <h3 class="form-titles text-center pt-4">Add Supplier Details</h3>
     <form>
-        <div class="col-6">
+        <div class="d-grid gap-3 card-body pt-2 p-5">
+        <div >
             <label  class="form-label">Company Name</label>
             <input type="text" class="form-control" id="inputCname" placeholder="Company Name">
         </div>
 
 
-        <div class="col-6">
+        <div >
             <label  class="form-label">Supplier Name</label>
             <input type="text" class="form-control" id="inputSname" placeholder="Supplier Name">
         </div>
 
 
-        <div class="col-6">
+        <div c>
             <label  class="form-label">Email</label>
             <input type="email" class="form-control" id="inputEmail" placeholder="Email">
         </div>
 
-        <div class="col-6">
+        <div >
             <label  class="form-label">Contact Number</label>
             <input type="text" class="form-control" id="inputConNum" placeholder="Contact Number">
         </div>
 
 
-        <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+        <div class="text-center">
+            <button class="btn btn-light" type="submit">Submit form</button>
         </div>
-
+        </div>
     </form>
 </div>
 <!-- FOOTER -->

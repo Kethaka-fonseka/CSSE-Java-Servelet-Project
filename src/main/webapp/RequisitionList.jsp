@@ -12,6 +12,8 @@
 <html>
 <head>
     <title>Requisition List</title>
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/toast.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
@@ -21,10 +23,10 @@
 <div class="card m-5">
 
   <br><br><br>
-  <h1 style="text-transform: uppercase; font-weight: 600" class="text-center  pt-3">Requisition List</h1>
-  <div class="card m-5">
+  <h4 style="text-transform: uppercase; font-weight: 600" class="form-titles  text-center mb-2 pt-3">Requisition List</h4>
+  <div class="m-2">
   <table class="table table-dark table-hover">
-    <thead>
+    <thead class="text-center">
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Item</th>
@@ -37,30 +39,45 @@
 
     </tr>
     </thead>
-    <tbody class="align-middle">
-    <%
-      ArrayList<Requisition> requisitions=(ArrayList<Requisition>) request.getAttribute("requisitions");
-      for(Requisition list:requisitions){
-    %>
+    <tbody class="align-middle text-center">
+<%--    <%--%>
+<%--      ArrayList<Requisition> requisitions=(ArrayList<Requisition>) request.getAttribute("requisitions");--%>
+<%--      for(Requisition list:requisitions){--%>
+<%--    %>--%>
     <tr>
-    <td><%=list.getRequisitionNo()%></td>
-      <td><%=list.getRequisitionType()%></td>
-      <td><%=list.getItemQty()%></td>
-      <td><%=list.getRequestedPrice()%></td>
-      <td><%=list.getTotalPrice()%></td>
-      <td><%=list.getRequestedBy()%></td>
-      <td><%=list.getStatus()%></td>
+<%--    <td><%=list.getRequisitionNo()%></td>--%>
+<%--      <td><%=list.getRequisitionType()%></td>--%>
+<%--      <td><%=list.getItemQty()%></td>--%>
+<%--      <td><%=list.getRequestedPrice()%></td>--%>
+<%--      <td><%=list.getTotalPrice()%></td>--%>
+<%--      <td><%=list.getRequestedBy()%></td>--%>
+<%--      <td><%=list.getStatus()%></td>--%>
+
+      <td>fbf</td>
+      <td>fbb</td>
+      <td>fbfb</td>
+      <td>bfb</td>
+      <td>244</td>
+      <td>ggr</td>
+      <td>rgr</td>
       <td>
-        <form action="GetRequisitionByIDServlet" method="post">
-       <button class="btn btn-success" name="id" type="submit" value=<%=list.getRequisitionNo()%>><i class="fa fa-pencil-square-o"></i></button>
-        </form>
-        <form action="DeleteRequisitionServlet"method="post">
-        <button class="btn btn-danger" type="submit"  name="id" value=<%=list.getRequisitionNo()%> ><i class="fa fa-trash"></i></button>
-        </form>
+        <div class="d-flex gap-3 justify-content-center">
+          <div>
+            <form action="GetRequisitionByIDServlet" method="post">
+                <button class="btn btn-success" name="id" type="submit" >Update</button>
+            </form>
+          </div>
+
+          <div>
+            <form action="DeleteRequisitionServlet"method="post">
+              <button class="btn btn-danger" type="submit"  name="id"  >Delete</button>
+            </form>
+          </div>
+        </div>
 
       </td>
     </tr>
-<%}%>
+<%--<%}%>--%>
     </tbody>
   </table>
   </div>
