@@ -57,5 +57,18 @@ CREATE TABLE site_managers(
                 CONSTRAINT site_manager_fk FOREIGN KEY(site_name) REFERENCES sites(site_name),
                 CONSTRAINT site_manager_user_fk FOREIGN KEY(u_id) REFERENCES users(u_id)
 ); 
+CREATE TABLE requisition(
+
+		        r_id int primary key AUTO_INCREMENT,
+                requisitionType varchar(20) NOT NULL,
+                requestedBy varchar (20) NOT NULL,
+                siteLocation varchar (20) NOT  NULL,
+                itemName varchar(20) NOT NULL,
+                itemQty int NOT NULL,
+                requestedPrice float NOT NULL,
+                status varchar(10) NOT NULL,
+                totalPrice float  NOT NULL
+
+);
 
 

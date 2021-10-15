@@ -16,7 +16,10 @@ import com.csse.model.Requisition;
 		 * @param requisition
 		 */
 		public void addRequisition(Requisition requisition);
-		
+
+
+		boolean checkApprovable(String siteName, float totalPrice);
+
 		/**
 		 * Get a particular requisition
 		 * 
@@ -41,5 +44,5 @@ import com.csse.model.Requisition;
 		public void removeItem(int requisitionNo);
 
 
-
-	}
+        boolean updateRequisition(Requisition requisition);
+    }

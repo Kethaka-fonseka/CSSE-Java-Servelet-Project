@@ -86,6 +86,21 @@ public class Requisition {
 	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
+	@Override
+	public String toString() {
+		return "Requisition{" +
+				"requisitionNo=" + requisitionNo +
+				", requisitionType='" + requisitionType + '\'' +
+				", requestedBy='" + requestedBy + '\'' +
+				", siteLocation='" + siteLocation + '\'' +
+				", itemName='" + itemName + '\'' +
+				", itemQty=" + itemQty +
+				", requestedPrice=" + requestedPrice +
+				", status='" + status + '\'' +
+				", totalPrice=" + totalPrice +
+				'}';
+	}
 }
 
 

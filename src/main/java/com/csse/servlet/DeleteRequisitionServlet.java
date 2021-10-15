@@ -20,7 +20,8 @@ public class DeleteRequisitionServlet extends HttpServlet {
        int requisitionNo=Integer.parseInt(request.getParameter("id"));
         IRequisitionService requisitionService=new RequisitionServiceimpl();
         requisitionService.removeItem(requisitionNo);
-        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/landPageCusView.jsp");
+        request.setAttribute("Message","Requisition is Deleted Successfully!");
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/RequisitionList.jsp");
         requestDispatcher.forward(request, response);
     }
 }

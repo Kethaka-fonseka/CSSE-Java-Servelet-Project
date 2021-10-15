@@ -10,8 +10,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "GetAllRequisiotionsServlet", value = "/GetAllRequisiotionsServlet")
-public class GetAllRequisiotionsServlet extends HttpServlet {
+@WebServlet(name = "GetAllRequisitionsServlet", value = "/GetAllRequisitionsServlet")
+public class GetAllRequisitionsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

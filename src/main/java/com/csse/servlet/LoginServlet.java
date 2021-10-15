@@ -1,14 +1,8 @@
 package com.csse.servlet;
 
 
-import com.csse.model.LoginBean;
-import com.csse.model.Staff;
-import com.csse.model.Supplier;
-import com.csse.model.User;
-import com.csse.service.ILoginService;
-import com.csse.service.LoginServiceImpl;
-import com.csse.service.RegisterServiceImpl;
-import com.csse.service.StaffServiceImpl;
+import com.csse.model.*;
+import com.csse.service.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -59,12 +53,16 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("staff",staff);
 				System.out.println("Hello " + staff.getUserName());
 
-			}else if(user.getUserRole().equals("supplier")){
+			}
+			if(user.getUserRole().equals("supplier")){
 				Supplier supplier = new RegisterServiceImpl().getSupplierByID(user.getUserId());
 				session.setAttribute("supplier",supplier);
 				System.out.println("Hello " + supplier.getUserName());
-			}else{
-				System.out.println("there is another user role");
+			}
+			if(user.getUserRole().equals("manager")){
+				Manager manager = new ManagerServiceImpl().getManagerByID(user.getUserId());
+				session.setAttribute("manager",manager);
+				System.out.println("Hello " + manager.getUserName());
 			}
 
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Head.jsp");

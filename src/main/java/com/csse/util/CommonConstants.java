@@ -186,6 +186,12 @@ public class CommonConstants {
 	/** Constant for query id delete  exiting requisition from id*/
 	public static final String QUERY_ID_REMOVE_REQUISITION="remove_requisition";
 
+	/** Constant for query id delete  exiting requisition from id*/
+	public static final String QUERY_ID_GET_SITE_BY_NAME="get_site_by_name";
+
+	/** Constant for query id update exiting requisition from id*/
+	public static final String QUERY_ID_UPDATE_REQUISITION="update_requisition";
+
 	public static final int COLUMN_INDEX_ONE = 1;
 	public static final int COLUMN_INDEX_TWO = 2;
 	public static final int COLUMN_INDEX_THREE = 3;

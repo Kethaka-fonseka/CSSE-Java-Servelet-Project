@@ -248,7 +248,7 @@
 	<!-- Insert requisition to the table -->
 	<query id="create_requisition_table">
 		<![CDATA[
-          	insert into requisition(requisitionType,requestedBy,siteLocation,itemName,itemQty, requestedPrice,status,totalPrice)
+          	insert into requisition(requisitionType, requestedBy, siteLocation, itemName, itemQty, requestedPrice, status, totalPrice)
           	values (?,?,?,?,?,?,?,?)
         ]]>
 	</query>
@@ -260,17 +260,31 @@
         ]]>
 	</query>
 
+	<query id="update_requisition">
+		<![CDATA[
+            update requisition as r
+            set r.requisitionType = ?, r.itemName = ?, r.itemQty = ?, r.requestedPrice = ?,r.status = ?,r.totalPrice =?
+            where r.r_id = ?
+        ]]>
+	</query>
+
 	<!-- remove requisition by id -->
 	<query id="remove_requisition">
 		<![CDATA[
-              delete from requisition where requisitionNo=?
+              delete from requisition r where r.r_id = ?
         ]]>
 	</query>
 
 	<!-- get requisition by id -->
 	<query id="get_requisition_by_id">
 		<![CDATA[
-              select * from requisition where requisitionNo=?
+              select * from requisition r where r.r_id = ?
+        ]]>
+	</query>
+
+	<query id="get_site_by_name">
+		<![CDATA[
+              select s.minimum_budget from sites s  where s.site_name = ?
         ]]>
 	</query>
 

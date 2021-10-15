@@ -139,8 +139,10 @@
 					  Inventory Transactions
 					</a>
 					<ul class="dropdown-menu " aria-labelledby="itemDropdown">
-						<li><a class="dropdown-item" href="AddSupplierDetails.jsp">Add Requisitions</a></li>
-						<li><a class="dropdown-item" href="ViewSupplier.jsp">View Requisitions</a></li>
+						<li><a class="dropdown-item" href="AddRequisition.jsp">Add Requisitions</a></li>
+						<form action="GetAllRequisitionsServlet" method="post">
+						<li><button class="dropdown-item" type="submit" >View Requisitions</button></li>
+						</form>
 					</ul>
 				</li>
 			</ul>

@@ -24,19 +24,9 @@
     </servlet-mapping>
 
 
-
-    <servlet>
-        <servlet-name>AddRequisitionServlet</servlet-name>
-        <servlet-class>com.csse.servlet.AddRequisitionServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddRequisitionServlet</servlet-name>
-        <url-pattern>/AddRequisition</url-pattern>
-    </servlet-mapping>
-
     <servlet>
         <servlet-name>GetAllRequisitionsServlet</servlet-name>
-        <servlet-class>com.csse.servlet.GetAllRequisiotionsServlet</servlet-class>
+        <servlet-class>com.csse.servlet.GetAllRequisitionsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GetAllRequisitionsServlet</servlet-name>
