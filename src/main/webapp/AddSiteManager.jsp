@@ -13,6 +13,18 @@
 	<h3 class="form-titles text-center pt-4">Add Site Manager</h3>
 	<form method="POST" action="AddManagerServlet">
 		<div class="d-grid gap-3 card-body pt-2 p-5">
+				<%
+            String message= (String) request.getAttribute("message");
+
+            if(message!=null)  {
+                %>
+				<%=message%>
+				<%
+                    }
+                %>
+
+			<div>
+		<div class="d-grid gap-3 card-body pt-2 p-5">
 			<div>
 				<label class="form-label" for="inputName">User Name</label>
 				<input type="text" class="form-control" name="user_name" id="inputName" placeholder="User Name">
