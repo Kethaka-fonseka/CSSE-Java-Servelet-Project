@@ -72,7 +72,7 @@
                     </form>
                 </div>
 
-                <div >
+                <div>
                     <form method="POST" action="DeleteSupplierServlet">
                         <input type="hidden" name="user_id" value="<%=supplier.getUserId()%>" />
                         <input type="submit" value="Delete" class="btn btn-danger" />
@@ -116,6 +116,6 @@
     </div>
 </div>
 <% } %>
-<script></script>
+
 </body>
 </html>

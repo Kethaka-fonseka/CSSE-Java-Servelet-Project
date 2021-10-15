@@ -127,8 +127,17 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent3">
 			<ul class="navbar-nav ms-auto  mb-lg-0s m-auto">
+
 				<li class="nav-item dropdown">
-					<a class="nav-link" href="#">Orders</a>
+					<a class="nav-link dropdown-toggle" href="#" id="orderDropDown" role="button"
+					   data-bs-toggle="dropdown" aria-expanded="false">
+						Order Management
+					</a>
+					<ul class="dropdown-menu " aria-labelledby="orderDropDown">
+						<li><a class="dropdown-item" href="Purchase.jsp">Purchase New Order </a></li>
+							<li><a class="dropdown-item" href="PurchaseOrderHistory.jsp" >View Orders</a></li>
+
+					</ul>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link" href="#">Deliveries</a>
@@ -169,7 +178,14 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent4">
 			<ul class="navbar-nav ms-auto  mb-lg-0s m-auto">
 				<li class="nav-item dropdown">
-					<a class="nav-link" href="#">Approvals</a>
+					<a class="nav-link dropdown-toggle" href="#" id="siteDropdown" role="button"
+					   data-bs-toggle="dropdown" aria-expanded="false">
+						Requisition Approvals
+					</a>
+					<ul class="dropdown-menu " aria-labelledby="siteDropdown">
+						<li><a class="dropdown-item" href="Approval.jsp">View Approval Requests</a></li>
+						<li><a class="dropdown-item" href="ApprovalHistory.jsp">View History</a></li>
+					</ul>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="siteDropdown2" role="button"
@@ -193,7 +209,7 @@
 <% } %>
 <%--Banners for each user role--%>
 <div class="container-fluid bg-light">
-	<div class="container">
+	<div class="container" style="background-image: url(images/background.jpeg)" >
 	<div class="row align-items-center gx-5 ">
 		<div class="col-lg-5  col-md-5 d-lg-block d-md-block d-none bg-light">
 			<div  class="d-flex p-2 justify-content-end">

@@ -251,4 +251,42 @@ public class RequisitionServiceimpl implements IRequisitionService {
         return res;
     }
 
+    @Override
+    public boolean approvalRequisition(Requisition requisition) {
+        boolean reply =false;
+
+        try {
+            connection = DBConnectionUtil.getDBConnection();
+            preparedStatement = connection
+                    .prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_APPROVAL));
+
+            preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, requisition.getStatus());
+            preparedStatement.setInt(CommonConstants.COLUMN_INDEX_TWO, requisition.getRequisitionNo());
+
+            int i  =preparedStatement.executeUpdate();
+            if(i!=0){
+                reply = true;
+            }
+
+
+        } catch (SQLException | SAXException | IOException | ParserConfigurationException
+                | ClassNotFoundException e) {
+            log.log(Level.SEVERE, e.getMessage());
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                log.log(Level.SEVERE, e.getMessage());
+            }
+        }
+
+        return reply;
+    }
+
+
 }

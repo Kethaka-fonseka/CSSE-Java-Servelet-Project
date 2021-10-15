@@ -192,6 +192,8 @@ public class CommonConstants {
 	/** Constant for query id update exiting requisition from id*/
 	public static final String QUERY_ID_UPDATE_REQUISITION="update_requisition";
 
+	/** Constant for query id update exiting requisition from id*/
+	public static final String QUERY_ID_APPROVAL="approval";
 
 	public static final int COLUMN_INDEX_ONE = 1;
 	public static final int COLUMN_INDEX_TWO = 2;

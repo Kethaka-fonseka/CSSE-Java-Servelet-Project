@@ -288,4 +288,11 @@
         ]]>
 	</query>
 
+	<query id="approval">
+		<![CDATA[
+            update requisition as r
+            set r.status = ?
+            where r.r_id = ?
+        ]]>
+	</query>
 </xml>

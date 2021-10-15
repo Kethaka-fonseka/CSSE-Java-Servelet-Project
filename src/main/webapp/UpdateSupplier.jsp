@@ -4,7 +4,6 @@
 <head>
 	<title>BC | Update Supplier</title>
 	<link rel="stylesheet" href="css/forms.css">
-	<link rel="stylesheet" href="css/forms.css">
 
 
 </head>
