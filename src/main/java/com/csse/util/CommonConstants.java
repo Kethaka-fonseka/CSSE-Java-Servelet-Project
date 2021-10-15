@@ -211,4 +211,62 @@ public class CommonConstants {
 
 
 
+
+
+
+
+
+
+	/** Constant for display manager error message*/
+	public static  final String ERROR_MESSAGE_MANAGER_NAME="Enter User Name";
+
+	/** Constant for display manager error message*/
+	public static  final String ERROR_MESSAGE_MANAGER_EMAIL="Enter Email";
+
+	/** Constant for display manager error message*/
+	public static final String ERROR_MESSAGE_MANAGER_PASSWORD="Enter password";
+
+	/** Constant for display manager error message*/
+	public static final String ERROR_MESSAGE_MANAGER_SITENAME="Enter Site Name";
+
+	/** Constant for display manager error message*/
+	public static final String ERROR_MESSAGE_MANAGER_MOBILE="Enter Contact number";
+
+
+
+
+
+
+
+
+	/** Constant for display requisition error message*/
+	public static  final String ERROR_MESSAGE_REQUISITION_TYPE="Enter requisition type";
+
+	/** Constant for display requisition error message*/
+	public static  final String ERROR_MESSAGE_REQUISITION_REQUESTEDBY="Enter requestedBy";
+
+	/** Constant for display requisition error message*/
+	public static final String ERROR_MESSAGE_REQUISITION_SITE_LOCATION="Enter Site Location";
+
+	/** Constant for display requisition error message*/
+	public static final String ERROR_MESSAGE_REQUISITION_ITEM_NAME="Enter Requisition Item Name";
+
+	/** Constant for display requisition error message*/
+	public static final String ERROR_MESSAGE_REQUISITION_ITEM_QTY="Enter Requisition Item Quantity";
+
+	/** Constant for display requisition error message*/
+	public static final String ERROR_MESSAGE_REQUISITION_REQUESTED_PRICE="Enter Requisition Item Price";
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

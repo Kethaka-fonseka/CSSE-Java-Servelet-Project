@@ -106,12 +106,12 @@ public class ItemServiceImpl implements IItemService {
 
                 items.add(item);
             }
-            System.out.println("RUN PROPERLY");
+
 
         } catch (SQLException | SAXException | IOException | ParserConfigurationException e) {
             log.log(Level.SEVERE, e.getMessage());
 
-            System.out.println("ERROR HERE RUN");
+
         }
         finally {
             /*

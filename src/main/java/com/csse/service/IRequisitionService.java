@@ -15,7 +15,7 @@ import com.csse.model.Requisition;
 		 * Add requisition for requisition table
 		 * @param requisition
 		 */
-		public void addRequisition(Requisition requisition);
+		public boolean addRequisition(Requisition requisition);
 
 
 		boolean checkApprovable(String siteName, float totalPrice);
@@ -41,7 +41,7 @@ import com.csse.model.Requisition;
 		 *
 		 * @param requisitionNo
 		 */
-		public void removeItem(int requisitionNo);
+		public int removeItem(int requisitionNo);
 
 
         boolean updateRequisition(Requisition requisition);

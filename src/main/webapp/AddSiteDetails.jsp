@@ -26,11 +26,11 @@
 
 
             if(message!=null)  {
-        %>
-        <%=message%>
-        <%
-            }
-        %>
+                %>
+                <%=message%>
+                <%
+                    }
+                %>
 
         <div>
             <label  class="form-label">Site Name</label>

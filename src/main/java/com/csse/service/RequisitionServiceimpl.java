@@ -29,7 +29,7 @@ public class RequisitionServiceimpl implements IRequisitionService {
 
 
     @Override
-    public void addRequisition(Requisition requisition) {
+    public boolean addRequisition(Requisition requisition) {
         try {
             connection = DBConnectionUtil.getDBConnection();
             preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_INSERT_REQUISITION));
@@ -44,11 +44,14 @@ public class RequisitionServiceimpl implements IRequisitionService {
             preparedStatement.setString(CommonConstants.COLUMN_INDEX_SEVEN, requisition.getStatus());
             preparedStatement.setFloat(CommonConstants.COLUMN_INDEX_EIGHT, requisition.getTotalPrice());
 
-            preparedStatement.execute();
+            boolean result=preparedStatement.execute();
             connection.commit();
+
+            return result;
 
         }catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
             log.log(Level.SEVERE, e.getMessage());
+            return false;
         } finally {
             try {
                 if (preparedStatement != null) {
@@ -121,7 +124,7 @@ public class RequisitionServiceimpl implements IRequisitionService {
     }
 
     @Override
-    public void removeItem(int requisitionNo) {
+    public int removeItem(int requisitionNo) {
 
         // Before deleting check whether requisitionNo is available
         if (requisitionNo != 0) {
@@ -133,9 +136,12 @@ public class RequisitionServiceimpl implements IRequisitionService {
                 preparedStatement = connection
                         .prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_REMOVE_REQUISITION));
                 preparedStatement.setInt(CommonConstants.COLUMN_INDEX_ONE, requisitionNo);
-                preparedStatement.executeUpdate();
+               int result = preparedStatement.executeUpdate();
+
+               return result;
             } catch (SQLException | SAXException | IOException | ParserConfigurationException | ClassNotFoundException e) {
                 log.log(Level.SEVERE, e.getMessage());
+                return 0;
             } finally {
                 /*
                  * Close prepared statement and database connectivity at the end
@@ -153,6 +159,7 @@ public class RequisitionServiceimpl implements IRequisitionService {
                 }
             }
         }
+        return 0;
     }
 
     private ArrayList<Requisition> actionOnRequisition(int requisitionNo) {
